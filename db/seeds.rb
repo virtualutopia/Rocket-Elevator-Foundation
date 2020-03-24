@@ -193,8 +193,8 @@ nbOfCustomer.times do
 #     Employee.create([{
 #         email: Faker::Internet.safe_email,
 #         password: Faker::Internet.password,
-#         firstName: Faker::Name.first_name,
-#         lastName: Faker::Name.last_name.gsub(/\W/, ''),
+#         firstName: Faker::Name.first_name.gsub(/\W/, '')
+#         lastName: Faker::Name.last_name.gsub(/\W/, '')
 #         phoneNumber: Faker::PhoneNumber.cell_phone,
 #         companyName: Faker::Company.name
 #     }])

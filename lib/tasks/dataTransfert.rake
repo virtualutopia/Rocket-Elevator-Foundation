@@ -5,7 +5,7 @@ require('pg')
 
 
 # task create_pg_table: :environment do
-#   conn = PG.connect("host=codeboxx-postgresql.cq6zrczewpu2.us-east-1.rds.amazonaws.com port=5432 dbname=jonathanMurray user=codeboxx password=Codeboxx1!");
+#   conn = PG.connect("host=localhost port=5432 dbname=rocketelevatorsdb user=groovy6879 password=root ");
 #   conn.exec("
 #   CREATE TABLE factquotes(
 #       quote_id INT PRIMARY KEY,
@@ -56,7 +56,7 @@ namespace :dataTransfert do
     task transfer_for_fact: :environment do
 
         #   conn = PG::Connection.open(host: "localhost", port: 5432, dbname:"rocket_elevators_information_system_development_psql", user:"postgres", password:"root")
-          conn = PG::Connection.open(host: "localhost", port: 5432, dbname:"rocketelevatorsdb", user:"felix", password:"ubuntu01")
+          conn = PG::Connection.open(host: "localhost", port: 5432, dbname:"rocketelevatorsdb", user:"groovy6879", password:"root")
 
 
          conn.exec ("TRUNCATE factquotes RESTART IDENTITY")
