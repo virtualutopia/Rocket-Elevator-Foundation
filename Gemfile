@@ -29,6 +29,8 @@ gem 'blazer'
 
 # gem 'figaro'
 
+gem 'twilio-ruby'
+
 gem "font-awesome-rails"
 
 # Use CoffeeScript for .coffee assets and views
