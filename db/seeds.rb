@@ -167,7 +167,7 @@ nbOfCustomer.times do
 
      end
   end
-
+end
  
 
 
@@ -200,13 +200,8 @@ nbOfCustomer.times do
 #     Customer.create([{
 #         email: Faker::Internet.safe_email,
 #         password: Faker::Internet.password,
-<<<<<<< HEAD
-#         firstName: Faker::Name.first_name,
-#         lastName: Faker::Name.last_name.gsub(/\W/, ''),
-=======
 #         firstName: Faker::Name.first_name.gsub(/\W/, '')
 #         lastName: Faker::Name.last_name.gsub(/\W/, '')
->>>>>>> master
 #         phoneNumber: Faker::PhoneNumber.cell_phone,
 #         companyName: Faker::Company.name
 #     }])
@@ -218,13 +213,8 @@ nbOfCustomer.times do
 #     Employee.create([{
 #         email: Faker::Internet.safe_email,
 #         password: Faker::Internet.password,
-<<<<<<< HEAD
-#         firstName: Faker::Name.first_name,
-#         lastName: Faker::Name.last_name.gsub(/\W/, ''),
-=======
 #         firstName: Faker::Name.first_name.gsub(/\W/, '')
 #         lastName: Faker::Name.last_name.gsub(/\W/, '')
->>>>>>> master
 #         phoneNumber: Faker::PhoneNumber.cell_phone,
 #         companyName: Faker::Company.name
 #     }])
