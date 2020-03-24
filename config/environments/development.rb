@@ -62,4 +62,8 @@ Rails.application.configure do
   # Use an evented file watcher to asynchronously detect changes in source code,
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
+
+  echo "export SENDGRID_API_KEY='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'" > sendgrid.env
+  echo "sendgrid.env" >> .gitignore
+  source ./sendgrid.env
 end
