@@ -27,6 +27,8 @@ gem 'faker'
 
 gem 'blazer'
 
+gem 'sendgrid-ruby'
+
 # gem 'figaro'
 
 gem "font-awesome-rails"
