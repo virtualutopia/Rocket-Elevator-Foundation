@@ -63,7 +63,7 @@ Rails.application.configure do
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
-  echo "export SENDGRID_API_KEY='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'" > sendgrid.env
+  echo "export SENDGRID_API_KEY='insérer la clé ici" > sendgrid.env
   echo "sendgrid.env" >> .gitignore
   source ./sendgrid.env
 end
