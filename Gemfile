@@ -17,8 +17,7 @@ gem 'uglifier', '>= 1.3.0'
 # gem 'mini_racer', platforms: :ruby
 # gem rail admin
 gem 'rails_admin', '~> 2.0'
-
-
+gem 'twilio-ruby'
 gem 'pg' 
 
 gem 'devise'
@@ -90,3 +89,16 @@ gem 'capistrano-rails', '~> 1.4', require: false
 gem 'capistrano-bundler', '>= 1.1.0'
 gem 'rvm1-capistrano3', require: false
 gem 'capistrano3-puma'
+
+#Slack integration gems
+gem 'slack-ruby-client'
+source 'https://rubygems.org'
+gem 'http'
+
+#Environment variables for credential protection
+  # The generator creates a config/application.yml file and modifies the .gitignore file to prevent the file from being checked into a git repository.
+  # You can add environment variables as key/value pairs to config/application.yml:
+  # GMAIL_USERNAME: Your_Username
+  # The environment variables will be available anywhere in your application as ENV variables:
+  # ENV["GMAIL_USERNAME"]
+gem 'figaro'

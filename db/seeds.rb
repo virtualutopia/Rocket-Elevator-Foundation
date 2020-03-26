@@ -55,8 +55,10 @@ nbOfCustomer.times do
     contact_phone: Faker::PhoneNumber.cell_phone,
     business_name: Faker::Company.name,
     user_id: i +=1 ,
-    address_id: y +=1
+    address_id: y +=1,
+    technician_full_name: Faker::Name.name.gsub(/\W/, '')
   )
+
   nbOfBuilding = rand(1..2)
   nbOfBuilding.times do
     building = Building.create!(
@@ -120,7 +122,9 @@ nbOfCustomer.times do
         end
       end
     end
+
 # i = 2
+
 # y = 5
 # 5.times do
 #   Battery.create(
@@ -156,4 +160,5 @@ nbOfCustomer.times do
 #         lastName: Faker::Name.last_name.gsub(/\W/, ''),
 #         phoneNumber: Faker::PhoneNumber.cell_phone,
 #         companyName: Faker::Company.name
+
 #     }])
