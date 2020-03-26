@@ -11,7 +11,6 @@ nbOfUser = 50  # >= nbOfEmloyee + nbOfCustomer
 nbOfEmployee = 20   
 nbOfCustomer = 30
 nbOfQuote = 100
-
 nbOfQuote.times do 
 end
 
@@ -132,8 +131,9 @@ nbOfCustomer.times do
         end
       end
     end
-    
+
 # i = 2
+
 # y = 5
 # 5.times do
 #   Battery.create(
@@ -169,4 +169,5 @@ nbOfCustomer.times do
 #         lastName: Faker::Name.last_name.gsub(/\W/, ''),
 #         phoneNumber: Faker::PhoneNumber.cell_phone,
 #         companyName: Faker::Company.name
+
 #     }])

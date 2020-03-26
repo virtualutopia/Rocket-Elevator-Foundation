@@ -115,26 +115,48 @@ GEM
       railties (>= 4.1.0)
       responders
       warden (~> 1.2.3)
+    domain_name (0.5.20190701)
+      unf (>= 0.0.5, < 1.0.0)
     errbase (0.2.0)
     erubi (1.9.0)
     execjs (2.7.0)
-    faker (2.10.2)
+    faker (2.11.0)
       i18n (>= 1.6, < 2)
     faraday (1.0.0)
       multipart-post (>= 1.2, < 3)
+
+    faraday_middleware (1.0.0.rc1)
+      faraday (~> 1.0)
+
     ffi (1.12.2)
     ffi (1.12.2-java)
     ffi (1.12.2-x64-mingw32)
     ffi (1.12.2-x86-mingw32)
+    ffi-compiler (1.0.1)
+      ffi (>= 1.0.0)
+      rake
+
     figaro (1.1.1)
       thor (~> 0.14)
     font-awesome-rails (4.7.0.5)
       railties (>= 3.2, < 6.1)
+    gli (2.19.0)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
     haml (5.1.2)
       temple (>= 0.8.0)
       tilt
+    hashie (4.1.0)
+    http (4.4.0)
+      addressable (~> 2.3)
+      http-cookie (~> 1.0)
+      http-form_data (~> 2.2)
+      http-parser (~> 1.2.0)
+    http-cookie (1.0.3)
+      domain_name (~> 0.5)
+    http-form_data (2.3.0)
+    http-parser (1.2.1)
+      ffi-compiler (>= 1.0, < 2.0)
     i18n (1.8.2)
       concurrent-ruby (~> 1.0)
     io-like (0.3.1)
@@ -292,6 +314,13 @@ GEM
       rubyzip (>= 1.2.2)
     sendgrid-ruby (6.1.2)
       ruby_http_client (~> 3.4)
+    slack-ruby-client (0.14.5)
+      activesupport
+      faraday (>= 0.9)
+      faraday_middleware
+      gli
+      hashie
+      websocket-driver
     spring (2.1.0)
     spring-watcher-listen (2.0.1)
       listen (>= 2.7, < 4.0)
@@ -324,6 +353,10 @@ GEM
       tzinfo (>= 1.0.0)
     uglifier (4.2.0)
       execjs (>= 0.3.0, < 3)
+    unf (0.1.4)
+      unf_ext
+    unf (0.1.4-java)
+    unf_ext (0.0.7.6)
     warden (1.2.8)
       rack (>= 2.0.6)
     web-console (3.7.0)
@@ -362,6 +395,7 @@ DEPENDENCIES
   faker
   figaro
   font-awesome-rails
+  http
   jbuilder (~> 2.5)
   jquery-rails
   listen (>= 3.0.5, < 3.2)
@@ -374,6 +408,7 @@ DEPENDENCIES
   sass-rails (~> 5.0)
   selenium-webdriver
   sendgrid-ruby
+  slack-ruby-client
   spring
   spring-watcher-listen (~> 2.0.0)
   turbolinks (~> 5)
