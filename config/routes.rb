@@ -51,6 +51,7 @@ Rails.application.routes.draw do
   
   get 'dashboard' => 'pages#dashboard'
 
+  get 'map' => 'gmap#gmap'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 

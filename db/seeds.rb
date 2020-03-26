@@ -13,27 +13,19 @@ nbOfCustomer = 30
 nbOfQuote = 100
 nbOfQuote.times do 
 end
-<<<<<<< HEAD
-=======
-
->>>>>>> master
-nbAdresse.times do
-  Address.create([{
-      address_type: [:Billing, :Shipping, :Home, :Business].sample,
-      status: [:Active, :Inactive].sample,
-      entity: [:Building, :Customer].sample,
-      street_number_name: Faker::Address.secondary_address,
-      apartment_number: Faker::Number.number(digits: 2),
-      city: Faker::Address.city_prefix,
-      zip_code: Faker::Address.postcode,
-      country: Faker::Address.country,
-      notes: Faker::Lorem.paragraph 
-  }])
-  end
-<<<<<<< HEAD
-=======
-
->>>>>>> master
+# nbAdresse.times do
+#   Address.create([{
+#       address_type: [:Billing, :Shipping, :Home, :Business].sample,
+#       status: [:Active, :Inactive].sample,
+#       entity: [:Building, :Customer].sample,
+#       street_number_name: Faker::Address.secondary_address,
+#       apartment_number: Faker::Number.number(digits: 2),
+#       city: Faker::Address.city_prefix,
+#       zip_code: Faker::Address.postcode,
+#       country: Faker::Address.country,
+#       notes: Faker::Lorem.paragraph 
+#   }])
+#   end
   nbOfUser.times do
      User.create([{
          email: Faker::Internet.safe_email,
@@ -44,10 +36,6 @@ nbAdresse.times do
          companyName: Faker::Company.name
     }])
   end
-<<<<<<< HEAD
-=======
-
->>>>>>> master
 i = 0
 nbOfEmployee.times do
       Employee.create([{
@@ -58,10 +46,6 @@ nbOfEmployee.times do
           user_id: i +=1
      }])
     end
-<<<<<<< HEAD
-=======
-
->>>>>>> master
 y = 0
 q = nbOfCustomer
 nbOfCustomer.times do
@@ -74,10 +58,6 @@ nbOfCustomer.times do
     address_id: y +=1,
     technician_full_name: Faker::Name.name.gsub(/\W/, '')
   )
-<<<<<<< HEAD
-=======
-
->>>>>>> master
   nbOfBuilding = rand(1..2)
   nbOfBuilding.times do
     building = Building.create!(
@@ -90,20 +70,12 @@ nbOfCustomer.times do
     customer_id: customer.id,
     address_id: q +=1
   )
-<<<<<<< HEAD
-=======
-
->>>>>>> master
   1.times do
     BuildingDetail.create!(
       building_id: building.id,
       information_key: Faker::Name.first_name,
       value: Faker::Lorem.paragraph
     )
-<<<<<<< HEAD
-=======
-
->>>>>>> master
     nbOfBattery = rand(1..2)
     selectEmploye = rand(1..nbOfEmployee)
     nbOfBattery.times do
@@ -118,10 +90,6 @@ nbOfCustomer.times do
         date_service_since: Faker::Date.backward(days: 1065),
         date_last_inspection: Faker::Date.backward(days: 1065)
       )
-<<<<<<< HEAD
-=======
-
->>>>>>> master
     nbOfColumn = rand(1..5)
     nbOfColumn.times do
       nbOfFloor = rand(1..50)
@@ -133,10 +101,6 @@ nbOfCustomer.times do
         information: Faker::Movies::Hobbit.character, 
         notes: Faker::Lorem.paragraph
       )
-<<<<<<< HEAD
-=======
-
->>>>>>> master
       nbOfElevator = rand(1..10)
       nbOfElevator.times do
         elveator = Elevator.create!(
@@ -151,23 +115,15 @@ nbOfCustomer.times do
           inspection_certificate: [:Yes, :No].sample,
           notes: Faker::Lorem.paragraph
         )
-<<<<<<< HEAD
-=======
-
->>>>>>> master
           end
           end
           end
         end
       end
     end
-<<<<<<< HEAD
-# i = 2
-=======
 
 # i = 2
 
->>>>>>> master
 # y = 5
 # 5.times do
 #   Battery.create(
@@ -203,9 +159,5 @@ nbOfCustomer.times do
 #         lastName: Faker::Name.last_name.gsub(/\W/, ''),
 #         phoneNumber: Faker::PhoneNumber.cell_phone,
 #         companyName: Faker::Company.name
-<<<<<<< HEAD
-#     }])
-=======
 
 #     }])
->>>>>>> master

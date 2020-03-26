@@ -32,6 +32,8 @@ gem 'figaro'
 
 gem "font-awesome-rails"
 
+gem 'geocoder'
+
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
@@ -92,7 +94,6 @@ gem 'capistrano3-puma'
 
 #Slack integration gems
 gem 'slack-ruby-client'
-source 'https://rubygems.org'
 gem 'http'
 
 #Environment variables for credential protection
@@ -101,4 +102,3 @@ gem 'http'
   # GMAIL_USERNAME: Your_Username
   # The environment variables will be available anywhere in your application as ENV variables:
   # ENV["GMAIL_USERNAME"]
-gem 'figaro'
