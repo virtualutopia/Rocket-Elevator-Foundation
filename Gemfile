@@ -29,7 +29,7 @@ gem 'blazer'
 
 gem 'sendgrid-ruby'
 
-# gem 'figaro'
+gem 'figaro'
 
 gem "font-awesome-rails"
 
