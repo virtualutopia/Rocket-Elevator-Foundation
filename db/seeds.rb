@@ -6,9 +6,6 @@ require 'faker'
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 # #   Character.create(name: 'Luke', movie: movies.first)
-
-
-
 nbAdresse = 200 # >= 3*nb de customer
 nbOfUser = 50  # >= nbOfEmloyee + nbOfCustomer
 nbOfEmployee = 20   
@@ -18,24 +15,19 @@ nbOfQuote = 100
 nbOfQuote.times do 
 end
 
-
-
-nbAdresse.times do
-  Address.create([{
-      address_type: [:Billing, :Shipping, :Home, :Business].sample,
-      status: [:Active, :Inactive].sample,
-      entity: [:Building, :Customer].sample,
-      street_number_name: Faker::Address.secondary_address,
-      apartment_number: Faker::Number.number(digits: 2),
-      city: Faker::Address.city_prefix,
-      zip_code: Faker::Address.postcode,
-      country: Faker::Address.country,
-      notes: Faker::Lorem.paragraph 
-  }])
-
-  end
-
-
+# nbAdresse.times do
+#   Address.create([{
+#       address_type: [:Billing, :Shipping, :Home, :Business].sample,
+#       status: [:Active, :Inactive].sample,
+#       entity: [:Building, :Customer].sample,
+#       street_number_name: Faker::Address.secondary_address,
+#       apartment_number: Faker::Number.number(digits: 2),
+#       city: Faker::Address.city_prefix,
+#       zip_code: Faker::Address.postcode,
+#       country: Faker::Address.country,
+#       notes: Faker::Lorem.paragraph 
+#   }])
+#   end
 
   nbOfUser.times do
      User.create([{
@@ -45,13 +37,10 @@ nbAdresse.times do
          lastName: Faker::Name.last_name.gsub(/\W/, ''),
          phoneNumber: Faker::PhoneNumber.cell_phone,
          companyName: Faker::Company.name
-         
     }])
   end
 
-
 i = 0
-
 nbOfEmployee.times do
       Employee.create([{
           email: Faker::Internet.safe_email,
@@ -60,13 +49,10 @@ nbOfEmployee.times do
           lastName: Faker::Name.last_name.gsub(/\W/, ''),
           user_id: i +=1
      }])
-
     end
-
 
 y = 0
 q = nbOfCustomer
-
 nbOfCustomer.times do
   customer = Customer.create!(
     contact_email: Faker::Internet.safe_email,
@@ -74,9 +60,10 @@ nbOfCustomer.times do
     contact_phone: Faker::PhoneNumber.cell_phone,
     business_name: Faker::Company.name,
     user_id: i +=1 ,
-    address_id: y +=1
+    address_id: y +=1,
+    technician_full_name: Faker::Name.name.gsub(/\W/, '')
   )
-    
+
   nbOfBuilding = rand(1..2)
   nbOfBuilding.times do
     building = Building.create!(
@@ -96,10 +83,9 @@ nbOfCustomer.times do
       information_key: Faker::Name.first_name,
       value: Faker::Lorem.paragraph
     )
-          
+
     nbOfBattery = rand(1..2)
     selectEmploye = rand(1..nbOfEmployee)
-                    
     nbOfBattery.times do
       battery = Battery.create!(
         building_id: building.id,
@@ -114,10 +100,8 @@ nbOfCustomer.times do
       )
 
     nbOfColumn = rand(1..5)
-          
     nbOfColumn.times do
       nbOfFloor = rand(1..50)
-
       column = Column.create!(
         battery_id: battery.id,
         building_type: [:Residential, :Commercial, :Corporate, :Hybrid].sample,
@@ -128,7 +112,6 @@ nbOfCustomer.times do
       )
 
       nbOfElevator = rand(1..10)
-        
       nbOfElevator.times do
         elveator = Elevator.create!(
           column_id: column.id,
@@ -149,13 +132,9 @@ nbOfCustomer.times do
         end
       end
     end
-
-
-
+    
 # i = 2
 # y = 5
-
-
 # 5.times do
 #   Battery.create(
 #     [{
@@ -173,9 +152,6 @@ nbOfCustomer.times do
 #  i = i + 1    
 #  y = y + 1
 # end
-     
-
-
 #  5.times do
 #     Customer.create([{
 #         email: Faker::Internet.safe_email,
@@ -185,16 +161,12 @@ nbOfCustomer.times do
 #         phoneNumber: Faker::PhoneNumber.cell_phone,
 #         companyName: Faker::Company.name
 #     }])
-
-
-
-
 #  3.times do
 #     Employee.create([{
 #         email: Faker::Internet.safe_email,
 #         password: Faker::Internet.password,
-#         firstName: Faker::Name.first_name.gsub(/\W/, '')
-#         lastName: Faker::Name.last_name.gsub(/\W/, '')
+#         firstName: Faker::Name.first_name,
+#         lastName: Faker::Name.last_name.gsub(/\W/, ''),
 #         phoneNumber: Faker::PhoneNumber.cell_phone,
 #         companyName: Faker::Company.name
 #     }])
