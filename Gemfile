@@ -17,8 +17,7 @@ gem 'uglifier', '>= 1.3.0'
 # gem 'mini_racer', platforms: :ruby
 # gem rail admin
 gem 'rails_admin', '~> 2.0'
-
-
+gem 'twilio-ruby'
 gem 'pg' 
 
 gem 'devise'
@@ -29,7 +28,7 @@ gem 'blazer'
 
 gem 'sendgrid-ruby'
 
-# gem 'figaro'
+gem 'figaro'
 
 gem "font-awesome-rails"
 

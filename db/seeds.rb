@@ -13,6 +13,7 @@ nbOfCustomer = 30
 nbOfQuote = 100
 nbOfQuote.times do 
 end
+
 nbAdresse.times do
   Address.create([{
       address_type: [:Billing, :Shipping, :Home, :Business].sample,
@@ -26,6 +27,7 @@ nbAdresse.times do
       notes: Faker::Lorem.paragraph 
   }])
   end
+
   nbOfUser.times do
      User.create([{
          email: Faker::Internet.safe_email,
@@ -36,6 +38,7 @@ nbAdresse.times do
          companyName: Faker::Company.name
     }])
   end
+
 i = 0
 nbOfEmployee.times do
       Employee.create([{
@@ -46,6 +49,7 @@ nbOfEmployee.times do
           user_id: i +=1
      }])
     end
+
 y = 0
 q = nbOfCustomer
 nbOfCustomer.times do
@@ -55,8 +59,10 @@ nbOfCustomer.times do
     contact_phone: Faker::PhoneNumber.cell_phone,
     business_name: Faker::Company.name,
     user_id: i +=1 ,
-    address_id: y +=1
+    address_id: y +=1,
+    technician_full_name: Faker::Name.name.gsub(/\W/, '')
   )
+
   nbOfBuilding = rand(1..2)
   nbOfBuilding.times do
     building = Building.create!(
@@ -69,12 +75,14 @@ nbOfCustomer.times do
     customer_id: customer.id,
     address_id: q +=1
   )
+
   1.times do
     BuildingDetail.create!(
       building_id: building.id,
       information_key: Faker::Name.first_name,
       value: Faker::Lorem.paragraph
     )
+
     nbOfBattery = rand(1..2)
     selectEmploye = rand(1..nbOfEmployee)
     nbOfBattery.times do
@@ -89,6 +97,7 @@ nbOfCustomer.times do
         date_service_since: Faker::Date.backward(days: 1065),
         date_last_inspection: Faker::Date.backward(days: 1065)
       )
+
     nbOfColumn = rand(1..5)
     nbOfColumn.times do
       nbOfFloor = rand(1..50)
@@ -100,6 +109,7 @@ nbOfCustomer.times do
         information: Faker::Movies::Hobbit.character, 
         notes: Faker::Lorem.paragraph
       )
+
       nbOfElevator = rand(1..10)
       nbOfElevator.times do
         elveator = Elevator.create!(
@@ -114,6 +124,7 @@ nbOfCustomer.times do
           inspection_certificate: [:Yes, :No].sample,
           notes: Faker::Lorem.paragraph
         )
+
           end
           end
           end
@@ -121,7 +132,8 @@ nbOfCustomer.times do
       end
     end
 
-    # i = 2
+# i = 2
+
 # y = 5
 # 5.times do
 #   Battery.create(
@@ -157,4 +169,5 @@ nbOfCustomer.times do
 #         lastName: Faker::Name.last_name.gsub(/\W/, ''),
 #         phoneNumber: Faker::PhoneNumber.cell_phone,
 #         companyName: Faker::Company.name
+
 #     }])

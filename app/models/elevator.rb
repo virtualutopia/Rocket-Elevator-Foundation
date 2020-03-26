@@ -1,15 +1,16 @@
-# you may test the Slack either via console or via app Admin panel.
-    # in console create a new Elevator ans save //  like this: elevator = Elevator.new(id:1009, column:Column.first, serial_number:1234444444321, status: "Active")
-    # then change the status and save again // like this: elevator.status = "new status"
-
-
 # required for Slack_messanger
 require 'http'
 require 'json'
 
+require 'send_sms/sms'
+
 class Elevator < ApplicationRecord
     belongs_to :column
     
+    # Slack API
+    # you may test the Slack either via console or via app Admin panel.
+    # in console create a new Elevator ans save //  like this: elevator = Elevator.new(id:1009, column:Column.first, serial_number:1234444444321, status: "Active")
+    # then change the status and save again // like this: elevator.status = "new status"
     after_update :slack_status_messenger, if: :status_changed
 
     def slack_status_messenger
@@ -25,6 +26,18 @@ class Elevator < ApplicationRecord
 
     def status_changed
         self.previous_changes[:status] != nil
+
+    # Twilio API
+    after_update :send_sms, if: :is_intervention
+    def send_sms()
+        t = self.column.battery.building.customer.technician_full_name
+        e = self.serial_number
+        test = SendSms::Sms.new
+        test.send_sms(t,e)
+
     end
 
+    def is_intervention
+        self.status == "Intervention"
+    end
 end
