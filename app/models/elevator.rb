@@ -26,6 +26,7 @@ class Elevator < ApplicationRecord
 
     def status_changed
         self.previous_changes[:status] != nil
+    end
 
     # Twilio API
     after_update :send_sms, if: :is_intervention
