@@ -8,7 +8,6 @@ class DropboxController < ApplicationController
   end
 
   # Example call:  (Authorization URL)
-#   GET /dropbox/auth_callback?code=VofXAX8DO1sAAAAAAAACUKBwkDZyMg1zKT0f_FNONeA
   def auth_callback
     auth_bearer = authenticator.get_token(params[:code],
                                           :redirect_uri => redirect_uri)
@@ -28,10 +27,8 @@ class DropboxController < ApplicationController
   private
 
   def authenticator
-    client_id = "ct3d8vfubjlmdah"
-    # ENV["DROPBOX_CLIENT_ID"]
-    client_secret = "l12dhdim78aeivo"
-    # ENV["DROPBOX_CLIENT_SECRET_ID"]
+    client_id = ENV["DROPBOX_CLIENT_ID"]
+    client_secret = ENV["DROPBOX_CLIENT_SECRET_ID"]
 
     DropboxApi::Authenticator.new(client_id, client_secret)
   end
