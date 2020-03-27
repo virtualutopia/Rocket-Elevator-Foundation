@@ -1,12 +1,10 @@
 class GmapController < ApplicationController
 
-before_action :authenticate_user!, :gmap
+before_action :authenticate_user!, :gmap, :require_admin
 
-def authorize_admin
-    @current_user.try(:title) != "employee"
-        flash[:error] = "ACCES DENIED"
-        return redirect_to request.referrer || "/index"
-  end
+def require_admin
+    redirect_to main_app.root_path unless current_user.is_employee(current_user.email)
+end
 
     def gmap
         @marks = []
