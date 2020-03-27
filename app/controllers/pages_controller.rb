@@ -2,28 +2,59 @@ class PagesController < ApplicationController
   
   before_action :authenticate_user!, only: [:dashboard]
   
+  skip_before_action :verify_authenticity_token
+  require 'sendgrid-ruby'
+  include SendGrid
+
   def index
 
   end
 
-
   def create
 
-      @lead = Lead.create(
-        full_name: params[:contact_full_Name],
-        business_name: params[:contact_business_name],
-        email: params[:contact_email],
-        phone: params[:contact_phone],
-        project_name: params[:contact_project_name],
-        project_description: params[:contact_project_description],
-        department: params[:contact_department],
-        message: params[:contact_message],
-        file_attachment: params[:contact_attachment]
-      )
+    @lead = Lead.create(
+      full_name: params[:contact_full_Name],
+      business_name: params[:contact_business_name],
+      email: params[:contact_email],
+      phone: params[:contact_phone],
+      project_name: params[:contact_project_name],
+      project_description: params[:contact_project_description],
+      department: params[:contact_department],
+      message: params[:contact_message],
+      file_attachment: params[:contact_attachment]
+    )
  
+    data = {
+      personalizations: [
+        {
+          to: [
+            {
+              email: @lead.email
+            }
+          ],
+          dynamic_template_data: {
+              subject: "Thank you for contacting us!",
+              full_name: @lead.full_name,
+              project_name: @lead.project_name
+          },
+        }
+      ],
+      from: {
+        email: "info@rocketelevatorsworld.com"
+      },
+      template_id: "d-914f77d8b1a546c3b80d6d6ba05bd4e7"
+    }
+    puts "********************************************"
+    sg = SendGrid::API.new(api_key: ENV['SENDGRID_API_KEY'])
+    puts sg
+    puts "********************************************"
+    response = sg.client.mail._("send").post(request_body: data)
+    puts response.as_json
+    puts "********************************************"
+
     redirect_to "/index"
-end
-  
+  end
+
 
 def home
    
