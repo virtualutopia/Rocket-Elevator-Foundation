@@ -13,6 +13,7 @@ nbOfCustomer = 30
 nbOfQuote = 100
 nbOfQuote.times do 
 end
+
 # nbAdresse.times do
 #   Address.create([{
 #       address_type: [:Billing, :Shipping, :Home, :Business].sample,
@@ -26,6 +27,7 @@ end
 #       notes: Faker::Lorem.paragraph 
 #   }])
 #   end
+
   nbOfUser.times do
      User.create([{
          email: Faker::Internet.safe_email,

@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.7.0'
+ruby '2.6.5'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.4', '>= 5.2.4.1'
@@ -28,13 +28,13 @@ gem 'blazer'
 
 gem 'sendgrid-ruby'
 
-gem 'figaro'
-
 gem "font-awesome-rails"
 
 gem 'geocoder'
 
 gem 'httparty'
+
+gem 'ibm_watson'
 
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
@@ -104,3 +104,4 @@ gem 'http'
   # GMAIL_USERNAME: Your_Username
   # The environment variables will be available anywhere in your application as ENV variables:
   # ENV["GMAIL_USERNAME"]
+gem 'figaro'
