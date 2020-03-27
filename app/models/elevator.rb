@@ -9,12 +9,11 @@ class Elevator < ApplicationRecord
     
     # Slack API
     # you may test the Slack either via console or via app Admin panel.
-    # in console create a new Elevator ans save //  like this: elevator = Elevator.new(id:1009, column:Column.first, serial_number:1234444444321, status: "Active")
+    # in console create a new Elevator ans save //  like this: elevator = Elevator.new(id:1300, column:Column.first, serial_number:1234444444321, status: "Active")
     # then change the status and save again // like this: elevator.status = "new status"
     after_update :slack_status_messenger, if: :status_changed
 
     def slack_status_messenger
-        puts "!!!!!!update occured!!!!!"
         rc = HTTP.post("https://slack.com/api/chat.postMessage", params:{
             token: ENV['SLACK_API_TOKEN'],
             channel: ENV['SLACK_WEBHOOK_CHANNEL'],
@@ -26,7 +25,7 @@ class Elevator < ApplicationRecord
 
     def status_changed
         self.previous_changes[:status] != nil
-
+    end
     # Twilio API
     after_update :send_sms, if: :is_intervention
     def send_sms()

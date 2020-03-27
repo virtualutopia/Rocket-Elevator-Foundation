@@ -104,3 +104,4 @@ gem 'http'
   # The environment variables will be available anywhere in your application as ENV variables:
   # ENV["GMAIL_USERNAME"]
 gem 'figaro'
+gem 'pry-byebug'

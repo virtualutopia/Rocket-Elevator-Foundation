@@ -20,7 +20,9 @@ class DropboxController < ApplicationController
 
     # If you persist this token, you can use it in subsequent requests or
     # background jobs to perform calls to Dropbox API such as the following.
-    folders = DropboxApi::Client.new(token).list_folder ""
+    # folders = DropboxApi::Client.new(token).list_folder ""
+    @client = DropboxApi::Client.new(token)
+    puts "new client "
   end
 
   private
