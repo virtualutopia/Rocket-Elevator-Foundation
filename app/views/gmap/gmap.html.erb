@@ -8,23 +8,15 @@
 
 <%# ####3 SCRIPT #### %>
 <script type="text/javascript">
-var name = '<%= @building_street_number_name %>'
-var lat = <%= @lat %>
-var lng = <%= @lng %>
-var customer_name = '<%= @customer_name %>'
-var num_battery = <%= @number_battery %>
-var num_column = <%= @number_column %>
-var num_elevator = <%= @number_elevator %>
-var tech_name = '<%= @technician_name %>'
+var num_build = <%= @building_num %>
 
 
+  var locations = []
 
-
-    var locations = []
-    var model = [name, lat, lng]
-    console.log(model)
-
+  <% @address.each do |address| %>
+     var model = ["<%= address.street_number_name %>", <%= address.lat%>, <%= address.lng%>]
      locations.push(model)
+  <% end %>
 
     var map = new google.maps.Map(document.getElementById('map'), {
       zoom: 4,
@@ -32,7 +24,7 @@ var tech_name = '<%= @technician_name %>'
       mapTypeId: google.maps.MapTypeId.ROADMAP
     });
   var contentString = '<div>'+
-  '<br> ><p>Customer: <%= @customer_name %></p>'+
+  '<br> <p>Customer: <%= @customer_name %></p>'+
   '<p>Number of battery: <%= @number_battery %></p>'+
   '<p>Number of column: <%= @number_column %></p>'+
   '<p>Number of elevator: <%= @number_elevator %></p>'+

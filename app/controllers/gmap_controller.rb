@@ -12,6 +12,8 @@ def authorize_admin
         @marks = []
         Building.all.each do |building|
 
+            @building = Building.all
+            @address = Address.all
             @building_num = Building.all.count
             # VARIABLES
             address_id = building.address_id #Find the building id
@@ -31,15 +33,7 @@ def authorize_admin
 
             @technician_name = Building.find(building.id).building_technical_contact_name #find the technician name
             # /VARIABLES
-
-            # @marks << {lat: building_lat, lng: building_lng,
-            #     building_name: building_street_number_name,
-            #     customer_name: customer_name,
-            #     number_battery: number_battery,
-            #     number_column: number_column,
-            #     number_elevator: number_elevator,
-            #     techn_name: technician_name}
-
+            
         end
 
     end
