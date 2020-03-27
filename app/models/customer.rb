@@ -7,7 +7,7 @@ class Customer < ApplicationRecord
   has_many :buildings
 
 
-  after_create :upload_attachment 
+  after_create :upload_attachment #, if: :custemr_does_not_exist
 
   def upload_attachment
     email = self.contact_email #Email of the new customer
@@ -23,12 +23,16 @@ class Customer < ApplicationRecord
           # file_content = IO.read "local_image.png"
           folder = self.contact_full_name.to_s
           p "A folde is created under the customer name ( #{folder} )" 
-          file = @client.upload("/#{folder}/#{l.file_attachment.to_s}", "Hello Dropbox!")
+          file = @client.upload("/#{folder}/#{l.file_attachment.to_s}", "Hello!")
         else 
           p "No attachement"
         end
       end
     end
+
+    def custemr_does_not_exist
+    end
+
   end
 
 end
