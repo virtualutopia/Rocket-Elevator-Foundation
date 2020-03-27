@@ -30,6 +30,10 @@ gem 'sendgrid-ruby'
 
 gem "font-awesome-rails"
 
+gem 'geocoder'
+
+gem 'httparty'
+
 gem 'ibm_watson'
 
 # Use CoffeeScript for .coffee assets and views
@@ -92,7 +96,6 @@ gem 'capistrano3-puma'
 
 #Slack integration gems
 gem 'slack-ruby-client'
-source 'https://rubygems.org'
 gem 'http'
 
 #Environment variables for credential protection

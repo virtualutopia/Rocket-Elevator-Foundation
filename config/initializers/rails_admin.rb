@@ -36,11 +36,15 @@ RailsAdmin.config do |config|
   }
 
   config.navigation_static_links = {
-  'Dashboard' => '/blazer/dashboards/1-dashboard-query' #or whatever you used to mount RailsAdmin in your routes file
+  'Dashboard' => '/blazer/dashboards/1-dashboard-query', #or whatever you used to mount RailsAdmin in your routes file
+  'GoogleMap' => '/map' #or whatever you used to mount RailsAdmin in your routes file
 }
 
+# config.navigation_static_links = {
+# }
+
   config.actions do
-    dashboard                     # mandatory
+    dashboard                     
     index                         # mandatory
     new
     export

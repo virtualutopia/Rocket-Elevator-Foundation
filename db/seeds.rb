@@ -13,19 +13,21 @@ nbOfCustomer = 30
 nbOfQuote = 100
 nbOfQuote.times do 
 end
-nbAdresse.times do
-  Address.create([{
-      address_type: [:Billing, :Shipping, :Home, :Business].sample,
-      status: [:Active, :Inactive].sample,
-      entity: [:Building, :Customer].sample,
-      street_number_name: Faker::Address.secondary_address,
-      apartment_number: Faker::Number.number(digits: 2),
-      city: Faker::Address.city_prefix,
-      zip_code: Faker::Address.postcode,
-      country: Faker::Address.country,
-      notes: Faker::Lorem.paragraph 
-  }])
-  end
+
+# nbAdresse.times do
+#   Address.create([{
+#       address_type: [:Billing, :Shipping, :Home, :Business].sample,
+#       status: [:Active, :Inactive].sample,
+#       entity: [:Building, :Customer].sample,
+#       street_number_name: Faker::Address.secondary_address,
+#       apartment_number: Faker::Number.number(digits: 2),
+#       city: Faker::Address.city_prefix,
+#       zip_code: Faker::Address.postcode,
+#       country: Faker::Address.country,
+#       notes: Faker::Lorem.paragraph 
+#   }])
+#   end
+
   nbOfUser.times do
      User.create([{
          email: Faker::Internet.safe_email,
@@ -58,7 +60,6 @@ nbOfCustomer.times do
     address_id: y +=1,
     technician_full_name: Faker::Name.name.gsub(/\W/, '')
   )
-
   nbOfBuilding = rand(1..2)
   nbOfBuilding.times do
     building = Building.create!(
