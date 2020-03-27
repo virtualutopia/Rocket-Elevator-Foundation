@@ -35,7 +35,6 @@ class Elevator < ApplicationRecord
         e = self.serial_number
         test = SendSms::Sms.new
         test.send_sms(t,e)
-
     end
 
     def is_intervention

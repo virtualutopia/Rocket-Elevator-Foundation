@@ -23,6 +23,8 @@ ActiveRecord::Schema.define(version: 2020_03_10_005221) do
     t.string "zip_code"
     t.string "country"
     t.text "notes"
+    t.string "lat"
+    t.string "lng"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
