@@ -19,8 +19,8 @@ var num_build = <%= @building_num %>
      locations.push(model)
 
     <% @building.each do |building| %>
-     var battery_ids = <%= Battery.where(building_id: building.id).ids %>
-    var column_ids = <%= Column.where(battery_id: battery_ids).ids %>
+    <%= battery_ids =  Battery.where(building_id: building.id).ids %>
+    <%= column_ids = Column.where(battery_id: battery_ids).ids %>
       var contentString = '<div>'+
 '<br> <p>Customer: <%= @customer_name %></p>'+
 '<p>Number of battery: <%= Battery.where(building_id: address.id).count %></p>'+
