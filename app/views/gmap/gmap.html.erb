@@ -23,10 +23,10 @@ var num_build = <%= @building_num %>
     <%= column_ids = Column.where(battery_id: battery_ids).ids %>
       var contentString = '<div>'+
 '<br> <p>Customer: <%= @customer_name %></p>'+
-'<p>Number of battery: <%= Battery.where(building_id: address.id).count %></p>'+
+'<p>Number of battery: <%= Battery.where(building_id: building.id).count %></p>'+
 '<p>Number of column: <%= Column.where(battery_id: battery_ids).count %></p>'+
 '<p>Number of elevator: <%= Elevator.where(column_id: column_ids).count %></p>'+
-'<p>Name of the technician: <%= Building.find(address.id).building_technical_contact_name %></p>'+
+'<p>Name of the technician: <%= Building.find(building.id).building_technical_contact_name %></p>'+
     <% end %>
   <% end %>
 
