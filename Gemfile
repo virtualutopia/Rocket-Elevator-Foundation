@@ -94,6 +94,8 @@ gem 'capistrano-bundler', '>= 1.1.0'
 gem 'rvm1-capistrano3', require: false
 gem 'capistrano3-puma'
 
+# Dropbox
+gem 'dropbox_api'
 #Slack integration gems
 gem 'slack-ruby-client'
 gem 'http'
@@ -105,5 +107,6 @@ gem 'http'
   # The environment variables will be available anywhere in your application as ENV variables:
   # ENV["GMAIL_USERNAME"]
 gem 'figaro'
+gem 'pry-byebug'
 
 gem 'zendesk_api', git: 'https://github.com/zendesk/zendesk_api_client_rb'

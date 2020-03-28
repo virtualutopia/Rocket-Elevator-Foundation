@@ -1,3 +1,4 @@
+require 'pry-byebug'
 class PagesController < ApplicationController
   
   before_action :authenticate_user!, only: [:dashboard]
