@@ -1,3 +1,4 @@
+require 'pry-byebug'
 class PagesController < ApplicationController
   
   before_action :authenticate_user!, only: [:dashboard]
@@ -8,7 +9,7 @@ class PagesController < ApplicationController
 
 
   def create
-
+    params.permit(:contact_attachment)
       @lead = Lead.create(
         full_name: params[:contact_full_Name],
         business_name: params[:contact_business_name],
@@ -20,7 +21,8 @@ class PagesController < ApplicationController
         message: params[:contact_message],
         file_attachment: params[:contact_attachment]
       )
- 
+  
+#  binding.pry{} 
     redirect_to "/index"
 end
   
