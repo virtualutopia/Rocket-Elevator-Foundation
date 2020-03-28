@@ -27,6 +27,7 @@ var num_build = <%= @building_num %>
 '<p>Number of column: <%= Column.where(battery_id: battery_ids).count %></p>'+
 '<p>Number of elevator: <%= Elevator.where(column_id: column_ids).count %></p>'+
 '<p>Name of the technician: <%= Building.find(address.id).building_technical_contact_name %></p>'+
+    <% end %>
   <% end %>
 
     var map = new google.maps.Map(document.getElementById('map'), {
