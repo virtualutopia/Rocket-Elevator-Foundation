@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.7.0'
+ruby '2.6.5'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.4', '>= 5.2.4.1'
@@ -28,9 +28,13 @@ gem 'blazer'
 
 gem 'sendgrid-ruby'
 
-gem 'figaro'
-
 gem "font-awesome-rails"
+
+gem 'geocoder'
+
+gem 'httparty'
+
+gem 'ibm_watson'
 
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
@@ -94,7 +98,6 @@ gem 'capistrano3-puma'
 gem 'dropbox_api'
 #Slack integration gems
 gem 'slack-ruby-client'
-source 'https://rubygems.org'
 gem 'http'
 
 #Environment variables for credential protection
@@ -105,3 +108,5 @@ gem 'http'
   # ENV["GMAIL_USERNAME"]
 gem 'figaro'
 gem 'pry-byebug'
+
+gem 'zendesk_api', git: 'https://github.com/zendesk/zendesk_api_client_rb'

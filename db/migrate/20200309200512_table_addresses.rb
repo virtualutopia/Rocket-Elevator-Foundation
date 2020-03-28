@@ -11,6 +11,8 @@ class TableAddresses < ActiveRecord::Migration[5.2]
       t.string :zip_code
       t.string :country
       t.text :notes
+      t.string :lat
+      t.string :lng
       t.timestamps
     end
   end
