@@ -17,10 +17,10 @@ var num_build = <%= @building_num %>
   <% @address.each do |address| %>
      var model = ["<%= address.street_number_name %>", <%= address.lat%>, <%= address.lng%>]
      locations.push(model)
-     var battery_ids = '<%= Battery.where(building_id: building.id).ids %>'
-    var column_ids = '<%= Column.where(battery_id: battery_ids).ids %>'
 
     <% @building.each do |building| %>
+     var battery_ids = <%= Battery.where(building_id: building.id).ids %>
+    var column_ids = <%= Column.where(battery_id: battery_ids).ids %>
       var contentString = '<div>'+
 '<br> <p>Customer: <%= @customer_name %></p>'+
 '<p>Number of battery: <%= Battery.where(building_id: address.id).count %></p>'+
