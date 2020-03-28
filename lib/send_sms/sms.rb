@@ -12,7 +12,7 @@ module SendSms
             client = Twilio::REST::Client.new(account_sid, auth_token)
             
             from = '+12035997964' # Your Twilio number
-            to = '+15819859714' # Your mobile phone number
+            to = '+1581-983-1152' # Your mobile phone number
             
             client.messages.create(
             from: from,
