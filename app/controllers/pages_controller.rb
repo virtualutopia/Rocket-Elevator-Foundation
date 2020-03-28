@@ -52,6 +52,17 @@ class PagesController < ApplicationController
     puts response.as_json
     puts "********************************************"
 
+    ZendeskAPI::Ticket.create!($client, 
+      :subject => "#{@lead.full_name} from #{@lead.business_name}",
+      :comment => { :value => "The contact #{@lead.full_name} from company #{@lead.business_name} can be reached 
+      at email #{@lead.email} and at phone number #{@lead.phone}. 
+      #{@lead.department} has a project named #{@lead.project_name} which would require contribution from Rocket Elevators. 
+      #{@lead.project_description}
+      Attached Message: #{@lead.message}
+      The Contact uploaded an attachment"},
+      :type => "question",
+      :priority => "normal")
+
     redirect_to "/index"
   end
 
