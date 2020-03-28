@@ -46,7 +46,7 @@ class PagesController < ApplicationController
       template_id: "d-914f77d8b1a546c3b80d6d6ba05bd4e7"
     }
     puts "********************************************"
-    sg = SendGrid::API.new(api_key: ENV['SENDGRID_API_KEY'])
+    sg = SendGrid::API.new(api_key: ENV['SENDGRID_API_KEYYY'])
     puts sg
     puts "********************************************"
     response = sg.client.mail._("send").post(request_body: data)
