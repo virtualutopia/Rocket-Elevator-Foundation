@@ -56,7 +56,10 @@ Rails.application.routes.draw do
   get 'dropbox/auth_callback' => 'dropbox#auth_callback'
 
   get 'map' => 'gmap#gmap'
-
+  
+  get '/watson/watson' => 'watson#watson'
+  
+  # get 'watson/watson', to: 'watson#watson'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
 end

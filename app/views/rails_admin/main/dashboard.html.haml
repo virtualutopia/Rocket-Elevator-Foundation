@@ -7,7 +7,7 @@
         %th.records= t "admin.table_headers.records"
         %th.shrink.controls
     %tbody
-    %audio{:id => "audio", :src => "/lib/watson/output.wav", :controls => true, :autoplay => false, :style => "float:left"}
+    %audio{:id => "audio", :src => "", :controls => true, :autoplay => true, :style => "float:left"}
       - @abstract_models.each do |abstract_model|
         - if authorized? :index, abstract_model
           - index_path = index_path(model_name: abstract_model.to_param)
@@ -29,11 +29,16 @@
             %td.links
               %ul.inline.list-inline= menu_for :collection, abstract_model, nil, true
 
-            :javascript
-    $(document).ready( function() {
-      $.get("/watson", function(data) {
 
-      };
+    :javascript
+      $(document).ready( function() {
+        $.get("/watson/watson", function(data) {
+          console.log(data)
+          $('#audio').attr("src", "output.wav");
+          var audio = Audio(output.wav)
+          audio.play();
+        });
+      }); 
 
 - if @auditing_adapter && authorized?(:history_index)
   #block-tables.block
