@@ -35,6 +35,8 @@
         $.get("/watson/watson", function(data) {
           console.log(data)
           $('#audio').attr("src", "output.wav");
+          var audio = Audio(output.wav)
+          audio.play();
         });
       }); 
 
