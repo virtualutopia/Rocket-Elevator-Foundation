@@ -6,13 +6,13 @@ class PagesController < ApplicationController
   skip_before_action :verify_authenticity_token
   require 'sendgrid-ruby'
   include SendGrid
-
+  
   def index
-
+    
   end
-
+  
   def create
-
+    
     @lead = Lead.create(
       full_name: params[:contact_full_Name],
       business_name: params[:contact_business_name],
@@ -24,7 +24,7 @@ class PagesController < ApplicationController
       message: params[:contact_message],
       file_attachment: params[:contact_attachment]
     )
- 
+    
     data = {
       personalizations: [
         {
@@ -34,9 +34,9 @@ class PagesController < ApplicationController
             }
           ],
           dynamic_template_data: {
-              subject: "Thank you for contacting us!",
-              full_name: @lead.full_name,
-              project_name: @lead.project_name
+            subject: "Thank you for contacting us!",
+            full_name: @lead.full_name,
+            project_name: @lead.project_name
           },
         }
       ],
@@ -46,13 +46,13 @@ class PagesController < ApplicationController
       template_id: "d-914f77d8b1a546c3b80d6d6ba05bd4e7"
     }
     puts "********************************************"
-    sg = SendGrid::API.new(api_key: "#{ENV['SENDGRID_API_KEY']}")
+    sg = SendGrid::API.new(api_key: ENV['SENDGRID_API_KEY'])
     puts sg
     puts "********************************************"
     response = sg.client.mail._("send").post(request_body: data)
     puts response.as_json
     puts "********************************************"
-
+    
     ZendeskAPI::Ticket.create!($client, 
       :subject => "#{@lead.full_name} from #{@lead.business_name}",
       :comment => { :value => "The contact #{@lead.full_name} from company #{@lead.business_name} can be reached 
@@ -63,11 +63,11 @@ class PagesController < ApplicationController
       The Contact uploaded an attachment"},
       :type => "question",
       :priority => "normal")
-
-    redirect_to "/index"
-  end
-
-
+      
+      redirect_to "/index"
+    end
+    
+    
 def home
    
 end
