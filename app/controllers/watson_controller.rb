@@ -11,7 +11,7 @@ class WatsonController < ApplicationController
 
         # If using IAM
         authenticator = IBMWatson::Authenticators::IamAuthenticator.new(
-          apikey: "3iVBPxSerBLNlIh3K4ovvIluPwhsX7UhB1jjwC91o5vu"
+          apikey: "#{ENV['ibm_key']}"
         )
 
         # If you have username & password in your credentials use:
@@ -24,7 +24,7 @@ class WatsonController < ApplicationController
         text_to_speech = IBMWatson::TextToSpeechV1.new(
           authenticator: authenticator
         )
-        text_to_speech.service_url = "https://api.us-east.text-to-speech.watson.cloud.ibm.com/instances/8fbb899b-7e00-48f8-9814-73aaf74e934a"
+        text_to_speech.service_url = "https://api.eu-gb.text-to-speech.watson.cloud.ibm.com/instances/699e576f-d321-44ec-a89c-67ae62877372"
 
         # puts JSON.pretty_generate(text_to_speech.list_voices.result)
 
