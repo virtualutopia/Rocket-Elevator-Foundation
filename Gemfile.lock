@@ -152,6 +152,9 @@ GEM
     ffi (1.12.2-java)
     ffi (1.12.2-x64-mingw32)
     ffi (1.12.2-x86-mingw32)
+    ffi-compiler (1.0.1)	
+      ffi (>= 1.0.0)	
+      rake
     figaro (1.1.1)
       thor (~> 0.14)
     font-awesome-rails (4.7.0.5)
