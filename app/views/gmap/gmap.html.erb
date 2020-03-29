@@ -12,10 +12,26 @@ var num_build = <%= @building_num %>
 
 
   var locations = []
+  var content = []
 
-  <% @address.each do |address| %>
-     var model = ["<%= address.street_number_name %>", <%= address.lat%>, <%= address.lng%>]
+  <% @building.each do |building| %>
+     var model = ["<%= Address.find(building.id).street_number_name %>", <%= Address.find(building.id).lat%>, <%= Address.find(building.id).lng%>]
      locations.push(model)
+
+    <%=address_id = Address.find(building.id).id %>
+    <%=customer_id = building.customer_id %>
+    <%=number_battery = Battery.where(building_id: building.id).count %>
+    <%=battery_ids = Battery.where(building_id: building.id).ids%>
+
+    var contentString = '<div>'+
+    '<br> <p>Customer: <%= Customer.find(customer_id).contact_full_name %></p>'+
+    '<p>Number of battery: <%= number_battery %></p>'+
+    '<p>Number of column: <%= Column.where(battery_id: battery_ids).count %></p>'+
+    '<p>Number of elevator: <%= @number_elevator %></p>'+
+    '<p>Name of the technician: <%= Building.find(building.id).building_technical_contact_name %></p>'+
+    '</div>'
+
+    content.push(contentString)
   <% end %>
 
     var map = new google.maps.Map(document.getElementById('map'), {
@@ -23,13 +39,7 @@ var num_build = <%= @building_num %>
       center: new google.maps.LatLng(52.0012, -99.0676),
       mapTypeId: google.maps.MapTypeId.ROADMAP
     });
-  var contentString = '<div>'+
-  '<br> <p>Customer: <%= @customer_name %></p>'+
-  '<p>Number of battery: <%= @number_battery %></p>'+
-  '<p>Number of column: <%= @number_column %></p>'+
-  '<p>Number of elevator: <%= @number_elevator %></p>'+
-  '<p>Name of the technician: <%= @technician_name %></p>'+
-  '</div>'
+    
 
     var infowindow = new google.maps.InfoWindow();
 
@@ -43,7 +53,7 @@ var num_build = <%= @building_num %>
 
       google.maps.event.addListener(marker, 'click', (function(marker, i) {
         return function() {
-          infowindow.setContent(locations[i][0] + contentString);
+          infowindow.setContent(locations[i][0] + content[i]);
           infowindow.open(map, marker);
         }
       })(marker, i));
