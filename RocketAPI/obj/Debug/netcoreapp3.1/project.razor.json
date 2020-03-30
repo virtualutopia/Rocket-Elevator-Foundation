@@ -1,0 +1,16 @@
+{
+  "FilePath": "/Users/codeboxx/Documents/GitHub/Rocket_Elevators_IS_Api/RocketAPI/RocketAPI.csproj",
+  "Configuration": {
+    "ConfigurationName": "MVC-3.0",
+    "LanguageVersion": "3.0",
+    "Extensions": [
+      {
+        "ExtensionName": "MVC-3.0"
+      }
+    ]
+  },
+  "ProjectWorkspaceState": null,
+  "RootNamespace": "RocketAPI",
+  "Documents": [],
+  "SerializationFormat": "0.2"
+}
