@@ -110,7 +110,7 @@ nbOfCustomer.times do
           serial_number: Faker::IDNumber.valid_south_african_id_number,
           model: [:Standard, :Premium, :Excelium].sample,
           building_type: [:Residential, :Commercial, :Corporate, :Hybrid].sample,
-          status: [:Active, :Inactive].sample,
+          status: [:Active, :Inactive, :Intervention].sample,
           information: Faker::Movies::Hobbit.character, 
           date_service_since: Faker::Date.backward(days: 1065),
           date_last_inspection: Faker::Date.backward(days: 1065),
