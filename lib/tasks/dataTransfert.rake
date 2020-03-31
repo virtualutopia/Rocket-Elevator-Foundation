@@ -70,6 +70,8 @@ require 'faker'
 ##################################################################################################|
 
 
+    desc "Data transfert"
+
     task transfer_for_fact: :environment do
       
       #   conn = PG::Connection.open(host: "localhost", port: 5432, dbname:"rocket_elevators_information_system_development_psql", user:"postgres", password:"root")
@@ -160,4 +162,3 @@ require 'faker'
 
     
   end
-  
