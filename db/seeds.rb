@@ -85,7 +85,7 @@ nbOfCustomer.times do
         building_id: building.id,
         employee_id: 5,
         building_type: [:Residential, :Commercial, :Corporate, :Hybrid].sample,
-        status: [:Active, :Inactive].sample,
+        status: [:Active, :Inactive, :Intervention].sample,
         operations_certificate: Faker::Superhero.descriptor,
         information: Faker::Movies::Hobbit.character, 
         notes: Faker::Beer.brand,
