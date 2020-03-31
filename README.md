@@ -4,9 +4,12 @@ Week 7
 Site is now online at http://fellixdallaire.ca/. Rails, mySQL and postgreSQL was used to make this possible.
 
 Admin :     admin@hotmail.com/////123456 
-User:       user@hotmail.com/////123456
+Basic User:       user@hotmail.com/////123456
 
-To send the data from sql to postgresql DB use :  rake dataTransfert:transfer_for_fact
+1- Create the postgres database : rake dataTransfert:create_psql_db
+2- Create the tables :            rake dataTransfert:create_pg_table
+3- Load the data of the old table :  rake dataTransfert:transfer_for_fact
+4- Load the new table with data :  rake dataTransfert:newTableData
 
 Steps to test the API:
 /!\ There is already and admin account. For the test, I would suggest to also create an user account to test the authorization.
