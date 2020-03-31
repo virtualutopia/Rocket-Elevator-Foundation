@@ -6,10 +6,10 @@ Site is now online at http://fellixdallaire.ca/. Rails, mySQL and postgreSQL was
 Admin :     admin@hotmail.com/////123456 
 Basic User:       user@hotmail.com/////123456
 
-1- Create the postgres database : rake dataTransfert:create_psql_db
-2- Create the tables :            rake dataTransfert:create_pg_table
-3- Load the data of the old table :  rake dataTransfert:transfer_for_fact
-4- Load the new table with data :  rake dataTransfert:newTableData
+1- Create the postgres database : rake dataTransfert:create_psql_db         /!\ You'ill probably need to change the information to connect to psql database
+2- Create the tables :            rake dataTransfert:create_pg_table        /!\ You'ill probably need to change the information to connect to psql database
+3- Load the data of the old table :  rake dataTransfert:transfer_for_fact   /!\ You'ill probably need to change the information to connect to psql database
+4- Load the new table with data :  rake dataTransfert:newTableData          /!\ You'ill probably need to change the information to connect to psql database
 
 Steps to test the API:
 /!\ There is already and admin account. For the test, I would suggest to also create an user account to test the authorization.
@@ -46,7 +46,7 @@ Steps to test the API:
     3- send a message + attachement via CONNECT section
     4- Go to felixdallaire.ca/admin/Customer and create a new customer with the same EMAIL address
     5- On Dropbox a new folder will be created under the name of the new customer, which include the previously attached file
-    Dropbox Account (Email: shahrivari60@gmail.com  / Pass: 123456 / Appname: ApiTeam5)
+    Dropbox Account (ID:  shahrivar60@gmail.com / Pass: Rocket@1234 / Appname: ApiTeam5)
         **Note 
             The added file has no content. there is still some problem in Active-storage configuration
             These steps are working on local. 

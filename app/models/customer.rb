@@ -1,7 +1,7 @@
 require 'dropbox_api'
 class Customer < ApplicationRecord
 
-  belongs_to :user, optional: true
+  belongs_to :user, optional: false
   belongs_to :address
 
   has_many :buildings

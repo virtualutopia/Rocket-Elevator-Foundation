@@ -8,13 +8,13 @@
 
 <%# ####3 SCRIPT #### %>
 <script type="text/javascript">
-var num_build = <%= @building_num %>
+var num_build = <%= Building.all.count %>
 
 
   var locations = []
   var content = []
 
-  <% @building.each do |building| %>
+  <% Building.all.each do |building| %>
      var model = ["<%= Address.find(building.id).street_number_name %>", <%= Address.find(building.id).lat%>, <%= Address.find(building.id).lng%>]
      locations.push(model)
 
@@ -27,7 +27,7 @@ var num_build = <%= @building_num %>
     '<br> <p>Customer: <%= Customer.find(customer_id).contact_full_name %></p>'+
     '<p>Number of battery: <%= number_battery %></p>'+
     '<p>Number of column: <%= Column.where(battery_id: battery_ids).count %></p>'+
-    '<p>Number of elevator: <%= @number_elevator %></p>'+
+    '<p>Number of elevator: <%= Elevator.where(column_id: Column.where(battery_id: battery_ids).ids).count %></p>'+
     '<p>Name of the technician: <%= Building.find(building.id).building_technical_contact_name %></p>'+
     '</div>'
 

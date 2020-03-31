@@ -9,12 +9,12 @@ require 'faker'
 
 
     task create_psql_db: :environment do
-      conn = PG.connect("host=localhost port=5432 dbname=postgres password=root ");
+      conn = PG.connect("host=localhost port=5432 dbname=postgres password=psql");
       conn.exec("CREATE DATABASE rocketelevators_api");
     end
 
     task create_pg_table: :environment do
-      conn = PG.connect("host=localhost port=5432 dbname=rocketelevators_api password=root ");
+      conn = PG.connect("host=localhost port=5432 dbname=rocketelevators_api password=psql");
       conn.exec("
       CREATE TABLE factquotes(
           quote_id INT PRIMARY KEY,
@@ -75,7 +75,8 @@ require 'faker'
     task transfer_for_fact: :environment do
       
       #   conn = PG::Connection.open(host: "localhost", port: 5432, dbname:"rocket_elevators_information_system_development_psql", user:"postgres", password:"root")
-      conn = PG::Connection.open(host: "localhost", port: 5432, dbname:"rocketelevators_api", password:"root")
+
+      conn = PG::Connection.open(host: "localhost", port: 5432, dbname:"rocketelevators_api", password:"psql")
       
       
       conn.exec ("TRUNCATE factquotes RESTART IDENTITY")
@@ -127,8 +128,9 @@ require 'faker'
     end
     
     task newTableData: :environment do
-      
-      conn = PG::Connection.open(host: "localhost", port: 5432, dbname:"rocketelevators_api", password:"root")
+
+      conn = PG::Connection.open(host: "localhost", port: 5432, dbname:"rocketelevators_api", password:"psql")
+
       conn.exec ("TRUNCATE dimcustomers RESTART IDENTITY")   
       intervention_elevator = Elevator.where(status: 'Intervention')
       intervention_elevator.all.each do |elevator|
