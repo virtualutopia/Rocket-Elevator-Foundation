@@ -22,10 +22,10 @@ class Customer < ApplicationRecord
         if l.file_attachment != nil && self.contact_full_name != nil
           # file_content = IO.read "local_image.png"
           folder = self.contact_full_name.to_s
-          p "A folde is created under the customer name ( #{folder} )" 
+          p "A folder is created under the customer name ( #{folder} )" 
           file = @client.upload("/#{folder}/#{l.file_attachment.to_s}", "Hello!")
         else 
-          p "No attachement"
+          p "No attachment"
         end
       end
     end

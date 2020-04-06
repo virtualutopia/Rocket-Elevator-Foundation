@@ -76,6 +76,7 @@ require 'faker'
     task transfer_for_fact: :environment do
       
       #   conn = PG::Connection.open(host: "localhost", port: 5432, dbname:"rocket_elevators_information_system_development_psql", user:"postgres", password:"root")
+
       conn = PG::Connection.open(host: "localhost", port: 5432, dbname:"rocketelevators_api", password:"psql")
       
       
@@ -128,8 +129,11 @@ require 'faker'
     end
     
     task newTableData: :environment do
+
       _id = 0
+
       conn = PG::Connection.open(host: "localhost", port: 5432, dbname:"rocketelevators_api", password:"psql")
+
       conn.exec ("TRUNCATE dimcustomers RESTART IDENTITY")   
       intervention_elevator = Elevator.where(status: 'Intervention')
       intervention_elevator.all.each do |elevator|
@@ -165,4 +169,3 @@ require 'faker'
 
     
   end
-  
