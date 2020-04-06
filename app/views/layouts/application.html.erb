@@ -200,8 +200,13 @@
 		
 <%# #######################	 %>
        <%= yield %>
+
 <%# #######################	 %>
-<%= form_tag "/index", method: 'post' do %>
+<%# <%= form_tag "/index", method: 'post' do %>
+       <%# <%= form_tag "/index", method: 'post' do %>
+	   <%= form_with model: @lead, url:index_path   do |f|%>
+	   <%# <%= form_with(model: @lead, local: true)  do |f|%> 
+
 			<!-- CONTACT -->
 			<section id="contact">
 				<div class="container">
@@ -318,7 +323,8 @@
 												<label for="contact:attachment">File Attachment</label>
 
 												<!-- custom file upload -->
-												<input class="custom-file-upload" type="file" id="file" name="contact_attachment" id="contact:attachment" data-btn-text="Select a File" />
+												<%= f.file_field :contact_attachment, :class => 'custom-file-upload', :'data-btn-text' => 'Select a file' %>
+												<%# <input class="custom-file-upload" type="file" id="file" name="contact_attachment" id="contact:attachment" data-btn-text="Select a File" /> %>
 												<small class="text-muted block">Max file size: 10Mb (zip/pdf/jpg/png)</small>
 
 											</div>
@@ -334,7 +340,8 @@
 							</form>
 
 						</div>
-						<%end%>
+
+<%end%>
 						<!-- /FORM -->
 
 

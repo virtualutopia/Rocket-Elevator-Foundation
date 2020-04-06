@@ -1,0 +1,61 @@
+
+	    <script async defer src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['google_key'] %>&callback=initMap"></script>
+
+  <div id="map" style="height: 80vh; width: 100%;"></div>
+
+
+
+
+<%# ####3 SCRIPT #### %>
+<script type="text/javascript">
+var num_build = <%= Building.all.count %>
+
+
+  var locations = []
+  var content = []
+
+  <% Building.all.each do |building| %>
+     var model = ["<%= Address.find(building.id).street_number_name %>", <%= Address.find(building.id).lat%>, <%= Address.find(building.id).lng%>]
+     locations.push(model)
+
+    <%=address_id = Address.find(building.id).id %>
+    <%=customer_id = building.customer_id %>
+    <%=number_battery = Battery.where(building_id: building.id).count %>
+    <%=battery_ids = Battery.where(building_id: building.id).ids%>
+
+    var contentString = '<div>'+
+    '<br> <p>Customer: <%= Customer.find(customer_id).contact_full_name %></p>'+
+    '<p>Number of battery: <%= number_battery %></p>'+
+    '<p>Number of column: <%= Column.where(battery_id: battery_ids).count %></p>'+
+    '<p>Number of elevator: <%= Elevator.where(column_id: Column.where(battery_id: battery_ids).ids).count %></p>'+
+    '<p>Name of the technician: <%= Building.find(building.id).building_technical_contact_name %></p>'+
+    '</div>'
+
+    content.push(contentString)
+  <% end %>
+
+    var map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 4,
+      center: new google.maps.LatLng(52.0012, -99.0676),
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    });
+    
+
+    var infowindow = new google.maps.InfoWindow();
+
+    var marker, i;
+
+    for (i = 0; i < locations.length; i++) { 
+      marker = new google.maps.Marker({
+        position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+        map: map
+      });
+
+      google.maps.event.addListener(marker, 'click', (function(marker, i) {
+        return function() {
+          infowindow.setContent(locations[i][0] + content[i]);
+          infowindow.open(map, marker);
+        }
+      })(marker, i));
+    }
+  </script>

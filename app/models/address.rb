@@ -1,5 +1,4 @@
 class Address < ApplicationRecord
-
-
+    
 
 end
