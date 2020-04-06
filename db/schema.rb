@@ -25,8 +25,8 @@ ActiveRecord::Schema.define(version: 2020_03_10_005221) do
     t.text "notes"
     t.string "lat"
     t.string "lng"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "batteries", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|

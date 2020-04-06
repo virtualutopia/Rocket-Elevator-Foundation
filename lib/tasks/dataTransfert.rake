@@ -46,6 +46,7 @@ require 'faker'
           city VARCHAR (355) NOT NULL
        );
        CREATE TABLE factIntervention(
+          ID INT PRIMARY KEY,
           EmployeeID INT NOT NULL,
           BuildingID INT NOT NULL,
           BatteryID INT,
@@ -129,6 +130,8 @@ require 'faker'
     
     task newTableData: :environment do
 
+      _id = 0
+
       conn = PG::Connection.open(host: "localhost", port: 5432, dbname:"rocketelevators_api", password:"psql")
 
       conn.exec ("TRUNCATE dimcustomers RESTART IDENTITY")   
@@ -156,9 +159,11 @@ require 'faker'
 
         _Report = Faker::Lorem.paragraphs(number: 1)
 
+        _id += 1
+
         
-        conn.exec( "INSERT INTO factintervention (employeeid, buildingid, batteryid, columnid, elevatorid, date_start, date_end, result, report, status )
-        VALUES ('#{_EmployeeID}', '#{_BuildingID}', '#{_BatteryID}', '#{_ColumnID}', '#{_ElevatorID}', '#{_Date_start}', '#{_Date_end}', '#{_Result}', '#{_Report}', '#{_Status}')")
+        conn.exec( "INSERT INTO factintervention (ID,employeeid, buildingid, batteryid, columnid, elevatorid, date_start, date_end, result, report, status )
+        VALUES ('#{_id}', '#{_EmployeeID}', '#{_BuildingID}', '#{_BatteryID}', '#{_ColumnID}', '#{_ElevatorID}', '#{_Date_start}', '#{_Date_end}', '#{_Result}', '#{_Report}', '#{_Status}')")
       end
     end
 

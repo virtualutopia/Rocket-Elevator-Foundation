@@ -36,6 +36,8 @@ gem 'httparty'
 
 gem 'ibm_watson'
 
+gem 'graphql'
+
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
@@ -110,3 +112,5 @@ gem 'figaro'
 gem 'pry-byebug'
 
 gem 'zendesk_api', git: 'https://github.com/zendesk/zendesk_api_client_rb'
+
+gem 'graphiql-rails', group: :development
