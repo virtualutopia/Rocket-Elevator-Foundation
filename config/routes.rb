@@ -1,10 +1,14 @@
 Rails.application.routes.draw do
 
 
+
+  resources :interventions
+
   if Rails.env.development?
     mount GraphiQL::Rails::Engine, at: "/graphiql", graphql_path: "/graphql"
   end
   post "/graphql", to: "graphql#execute"
+
   devise_for :employees
   devise_for :users
   
@@ -39,6 +43,7 @@ Rails.application.routes.draw do
 
   post 'submission' => 'quotes#create'
  
+  get 'interventions' => 'interventions#index'
 
   get 'employee' => 'pages#employee'
 
@@ -56,12 +61,13 @@ Rails.application.routes.draw do
   get 'dashboard' => 'pages#dashboard'
 
   # Dropbox related routings
-  get 'dropbox/auth' => 'dropbox#auth'
-  get 'dropbox/auth_callback' => 'dropbox#auth_callback'
+  # get 'dropbox/auth' => 'dropbox#auth'
+  # get 'dropbox/auth_callback' => 'dropbox#auth_callback'
 
   get 'map' => 'gmap#gmap'
   
   get '/watson/watson' => 'watson#watson'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
 
 end
