@@ -14,7 +14,16 @@ class InterventionsController < ApplicationController
 
   # GET /interventions/new
   def new
-    @intervention = Intervention.new
+    @intervention = Intervention.new(intervention_params)
+      p ("================================= NEW ===============================")
+      puts params[:customer] 
+      if params[:customer].present?
+          @buildings = Cutomer.find(params[:customer]).buildings
+      else
+          @buildings = Building.all
+      end
+
+
   end
 
   # GET /interventions/1/edit
@@ -24,7 +33,12 @@ class InterventionsController < ApplicationController
   # POST /interventions
   # POST /interventions.json
   def create
+    p ("######################### CREATE ######################################")
+    puts intervention_params
+    # unlocked_params = ActiveSupport::HashWithIndifferentAccess.new(intervention_params)
     @intervention = Intervention.new(intervention_params)
+    
+    
 
     respond_to do |format|
       if @intervention.save
@@ -36,6 +50,10 @@ class InterventionsController < ApplicationController
       end
     end
   end
+
+private def intervention_params
+  params.require(:intervention).permit(:author_id, :customer_id, :building_id, :battery_id, :column_id, :elevator_id, :employeeID, :start_date, :end_date, :result, :report, :status)
+end
 
   # PATCH/PUT /interventions/1
   # PATCH/PUT /interventions/1.json

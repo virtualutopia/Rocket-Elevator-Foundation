@@ -3,3 +3,60 @@
 <%= render 'form', intervention: @intervention %>
 
 <%= link_to 'Back', interventions_path %>
+
+
+<script>
+var cust = document.getElementById("intervention_customer_id");
+var build = document.getElementById("intervention_building_id");
+var batt = document.getElementById("intervention_battery_id");
+var col = document.getElementById("intervention_column_id");
+var el = document.getElementById("intervention_elevator_id");
+
+//   alert("Hello java is active!");
+//   document.getElementById("intervention_building_id").prop("disabled", true);
+//   document.getElementsByClassName("customer_block").style.backgroundColor = "red";
+  document.getElementById("form_title_1").style.color="red";
+  build.style.visibility = "hidden";
+  batt.style.visibility = "hidden";
+  col.style.visibility = "hidden";
+  el.style.visibility = "hidden";
+//   $("#intervention_column_id").css('display', 'none');
+//   $("#intervention_column_id").hide();
+  
+  
+//   $("#intervention_building_id").css("display", "none");
+    // document.getElementsByClassName("customer_block").style.color="red";
+    // document.getElementsByClassName("form_title").style.color="brown";
+//   $("#intervention_building_id").css("display", "none");
+//   $(".control-label").css("background-color", "yellow");
+//   $(".form_title").prop("disabled", true);
+//   $("#intervention_building_id").prop("disabled", true);
+
+cust.onchange = function()
+{
+    console.log("costemoer ID: ", cust.value);
+    build.style.visibility = "visible";
+}
+
+build.onchange = function()
+{
+    console.log("Building ID: ", build.value);
+    batt.style.visibility = "visible";
+}
+batt.onchange = function()
+{
+    console.log("Battery ID: ", batt.value);
+    col.style.visibility = "visible";
+}
+col.onchange = function()
+{
+    console.log("Column ID: ", col.value);
+    el.style.visibility = "visible";
+}
+el.onchange = function()
+{
+    console.log("Elevator ID: ", el.value);
+    // batt.style.visibility = "visible";
+}
+
+</script>
