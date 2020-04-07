@@ -3,6 +3,7 @@ class Employee < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   belongs_to :user
   has_many :batteries
+  has_many :interventions
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable

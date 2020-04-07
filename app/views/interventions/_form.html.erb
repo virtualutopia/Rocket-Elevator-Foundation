@@ -1,0 +1,24 @@
+<%= form_with(model: intervention, local: true) do |f| %>
+  <% if intervention.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(intervention.errors.count, "error") %> prohibited this intervention from being saved:</h2>
+
+      <ul>
+      <% intervention.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <div>
+      <%= f.label :customer_id%>
+      <%= collection_select( :intervention, :customer_id, Customer.all, :id, :contact_full_name, {}, { :multiple => false} )%>
+      <%# <%= f.select :customer_id, options_for_select(@customers.collect { |customer|
+      [customer.contact_full_name.titleize, customer.id] }, 1), {}, { id: 'customers_select' } %> %>
+      
+    </div>
+    <%= f.submit %>
+  </div>
+<% end %>
