@@ -1,4 +1,4 @@
-<div class="container">
+
 <%= form_with(model: intervention, local: true) do |f| %>
   <% if intervention.errors.any? %>
     <div id="error_explanation">
@@ -14,7 +14,7 @@
 
   <div class="actions">
   <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-5">
     <h1 class="form_title">Intervention Case</h1>
       <div class="control-group">
         <%= f.label :customer_id, class:'control-label'%>
@@ -26,34 +26,37 @@
       <div class="control-group">
         <%= f.label :building_id, class:'control-label'%>
         <div class="controls">
-          <%= collection_select( :intervention, :building_id, Building.order(:id), :id, :id, {prompt: 'Select Building'}, { :multiple => false} )%>
+          <%= grouped_collection_select( :intervention, :building_id, Customer.order(:business_name), :buildings, :business_name, :id, :id, { :multiple => false} )%>
         </div>
       </div>   
-  <br> 
+      <br> 
       <div class="control-group">
         <%= f.label :battery_id, class:'control-label'%>
         <div class="controls">
-          <%= collection_select( :intervention, :battery_id, Battery.all, :id, :id, {prompt: 'Select Battery'}, { :multiple => false} )%>
+          <%= collection_select( :intervention, :battery_id, Battery.all, :id, :id, { :multiple => false} )%>
         </div>
       </div>
       <br>
       <div class="control-group">
         <%= f.label :column_id, class:'control-label'%>
         <div class="controls">
-          <%= collection_select( :intervention, :column_id, Column.all, :id, :id, {prompt: 'None'}, { :multiple => false} )%>
+          <%= collection_select( :intervention, :column_id, Column.all, :id, :id, { :multiple => false} )%>
         </div>
       </div> 
       <br>
       <div class="control-group">
         <%= f.label :elevator_id, class:'control-label'%>
         <div class="controls">
-          <%= collection_select( :intervention, :elevator_id, Elevator.all, :id, :id, {prompt: 'None'}, { :multiple => false} )%>
+          <%= collection_select( :intervention, :elevator_id, Elevator.all, :id, :id, { :multiple => false} )%>
         </div>
       </div> 
       <br>  
     </div>
 
-    <div class="col-md-4">
+    <div class="col-md-2">
+    </div>
+
+    <div class="col-md-5">
       <h1 class="form_title" id="form_title_1">Details</h1>
       <div class="control-group">
         <%= f.label :employee_id, class:'control-label'%>
@@ -76,8 +79,138 @@
   <%= f.submit class: 'btn btn-warning'%>
   </div>
 <% end %>
-</div>
 
+<%# ==================== SCRIPT ==================== %>
+<script>
+  // A $( document ).ready() block.
+  $( document ).ready(function() {
+    console.log( "ready!" );
+
+    cust = $("#intervention_customer_id");
+    build = $('#intervention_building_id');
+    batt = $('intervention_battery_id');
+    col = $('intervention_column_id');
+    elev = $('intervention_elevator_id');
+// Buildings dropdown menu
+    $("#intervention_customer_id").change(function() {
+      
+      if(cust == ''){
+        document.getElementById("intervention_building_id").style.visibility = "hidden";
+      }else{
+        document.getElementById("intervention_building_id").style.visibility = "visible";
+      }
+      var selected_customer_id = $(this).val();
+      console.log( $(this).val() );
+
+      // $.ajax({
+      //   url: "/interventions/get_buildings_for_customer",
+      //   method: "GET",  
+      //   dataType: "json",
+      //   data: {customer_id: selected_customer_id},
+      //   error: function (xhr, status, error) {
+      //     	console.error('AJAX Error: ' + status + error);
+      //   },
+      //   success: function (response) {
+      //     console.log(response);
+      //     var buildings = response["buildings"];
+      //     $("#intervention_building_id").empty();
+
+      //     $("#intervention_building_id").append('<option>Select Buildings</option>');
+      //     for(var i = 0; i < buildings.length; i++){
+      //       $("#intervention_building_id").append('<option value="' + buildings[i]["id"] + '">' +buildings[i]["id"] + '</option>');
+      //     }
+      //   }
+      // });
+
+      // Serge Savoi notes
+      var selected_customer_id = $(this).val();
+      $.get('/interventions/get_buildings_for_customer', {customer_id: selected_customer_id}, function(result) {
+        console.log('return result from server: ');
+        console.log(result);
+        var buildings = result["buildings"];
+        $("#intervention_building_id").empty();
+        $("#intervention_building_id").append('<option>Select Buildings</option>');
+        $.each(result, function(i, j) {
+          var row = '<option value="' + j.id + '">' + j.id + '</option>';
+          console.log(row);
+          $(row).appendTo("#intervention_building_id")
+        });
+      });
+    });
+
+  // Batteries dropdown menu
+  $("#intervention_building_id").change(function() {
+      if(build == ''){
+        document.getElementById("intervention_battery_id").style.visibility = "hidden";
+      }else{
+        document.getElementById("intervention_battery_id").style.visibility = "visible";
+      }
+      var selected_building_id = $(this).val();
+      console.log('selected building id: ')
+      console.log( $(this).val() );
+      $.get('/interventions/get_batteries_for_building', {building_id: selected_building_id}, function(result) {
+        console.log('return result from server: ');
+        console.log(result);
+        $("#intervention_battery_id").empty();
+        $("#intervention_battery_id").append('<option>Select Battery</option>');
+        $.each(result, function(i, j) {
+          var row = '<option value="' + j.id + '">' + j.id + '</option>';
+          console.log(row);
+          $(row).appendTo("#intervention_battery_id")
+        });
+      });
+    });
+
+  // Column dropdown menu
+  $("#intervention_battery_id").change(function() {
+      if(batt == ''){
+        document.getElementById("intervention_column_id").style.visibility = "hidden";
+      }else{
+        document.getElementById("intervention_column_id").style.visibility = "visible";
+      }
+      var selected_battery_id = $(this).val();
+      console.log('selected building id: ')
+      console.log( $(this).val() );
+      $.get('/interventions/get_columns_for_battery', {battery_id: selected_battery_id}, function(result) {
+        console.log('return result from server: ');
+        console.log(result);
+        $("#intervention_column_id").empty();
+        $("#intervention_column_id").append('<option>None</option>');
+        $.each(result, function(i, j) {
+          var row = '<option value="' + j.id + '">' + j.id + '</option>';
+          console.log(row);
+          $(row).appendTo("#intervention_column_id")
+        });
+      });
+    });
+
+  // Elevator dropdown menu
+  $("#intervention_column_id").change(function() {
+      if(col == ''){
+        document.getElementById("intervention_elevator_id").style.visibility = "hidden";
+      }else{
+        document.getElementById("intervention_elevator_id").style.visibility = "visible";
+      }
+      var selected_column_id = $(this).val();
+      console.log('selected building id: ')
+      console.log( $(this).val() );
+      $.get('/interventions/get_elevators_for_column', {column_id: selected_column_id}, function(result) {
+        console.log('return result from server: ');
+        console.log(result);
+        $("#intervention_elevator_id").empty();
+        $("#intervention_elevator_id").append('<option>None</option>');
+        $.each(result, function(i, j) {
+          var row = '<option value="' + j.id + '">' + j.id + '</option>';
+          console.log(row);
+          $(row).appendTo("#intervention_elevator_id")
+        });
+      });
+    });
+    
+  });
+
+</script>
+<%# ==================== /SCRIPT ==================== %>
 
 
 

@@ -1,7 +1,15 @@
 Rails.application.routes.draw do
 
 
-  resources :interventions
+  resources :interventions do
+    collection do 
+      get :get_buildings_for_customer
+      get :get_batteries_for_building
+      get :get_columns_for_battery
+      get :get_elevators_for_column
+    end
+  end
+
   devise_for :employees
   devise_for :users
   
@@ -36,7 +44,7 @@ Rails.application.routes.draw do
 
   post 'submission' => 'quotes#create'
  
-  get 'interventions' => 'interventions#index'
+  #get 'interventions' => 'interventions#index'
 
   get 'employee' => 'pages#employee'
 
@@ -62,5 +70,6 @@ Rails.application.routes.draw do
   get '/watson/watson' => 'watson#watson'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
+  
 
 end

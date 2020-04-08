@@ -3,7 +3,13 @@
   .table_interventions{font-size:15px}
 </style>
 </head>
+
 <body>
+
+<%# ----- To give the access to the employees - part 1/2 ----------- %>
+<% if user_signed_in? && current_user.is_employee(current_user.email)  %>
+
+
 <p id="notice"><%= notice %></p>
 <br>
 <br>
@@ -45,8 +51,19 @@
     <% end %>
   </tbody>
 </table>
-<%= link_to 'New Intervention', new_intervention_path, class: 'btn btn-success btn-sm' %>
+<%= link_to 'New Intervention', new_intervention_path, class: 'btn btn-success btn-md' %>
 </div>
+
+<%# ----- To give the access to the employees - part 2/2 ----------- %>
+<% else %>
+<br><br><br> 
+<br><br><br>
+    <div class = "container">
+        <h1>This page is reserved to the Employees</h1>
+        <h4>Please Login with your employee code</h4>
+        <%= link_to "Login", new_user_session_path, :class => 'btn btn-warning'  %><br>														
+    </div>
+<% end %>
 </body>
 
 
