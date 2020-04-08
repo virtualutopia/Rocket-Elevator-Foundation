@@ -28,6 +28,11 @@ gem 'blazer'
 
 gem 'sendgrid-ruby'
 
+
+gem 'figaro'
+
+gem 'twilio-ruby'
+
 gem "font-awesome-rails"
 
 gem 'geocoder'

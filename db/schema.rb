@@ -64,6 +64,7 @@ ActiveRecord::Schema.define(version: 2020_04_06_223726) do
     t.index ["employee_id"], name: "index_batteries_on_employee_id"
   end
 
+
   create_table "building_details", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "building_id"
     t.string "information_key"
