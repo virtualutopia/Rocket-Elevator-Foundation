@@ -1,10 +1,10 @@
-<h1>New Intervention</h1>
+<div class="container">
+    <h1>New Intervention</h1>
+    <%= render 'form', intervention: @intervention %>
+    <%= link_to 'Back', interventions_path, class: 'btn btn-success btn-sm'%>
+</div>
 
-<%= render 'form', intervention: @intervention %>
-
-<%= link_to 'Back', interventions_path %>
-
-
+<%# <--------------- Script ---------------> %>
 <script>
 var cust = document.getElementById("intervention_customer_id");
 var build = document.getElementById("intervention_building_id");

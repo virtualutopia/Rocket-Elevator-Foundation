@@ -106,10 +106,12 @@
 											CONTACT
 										</a>
 									</li>
-									<li><!-- CONTACT -->
-										<a href="interventions.html">Interventions</a>
-									</li>
-								<%# </li> %>
+									<%# <% if user_signed_in? && current_user.is_employee(current_user.email) %> 
+										<li><!-- INTERVENTION -->
+											<a href="interventions.html">Interventions</a>
+										</li>
+									
+									<%# </li> %>
 									<li><!-- Submission -->
 										<a href="submission.html">
 											SUBMISSION
@@ -127,12 +129,12 @@
 											<li>
 												<div class="w3-dropdown-hover">
 													<button class="w3-button w3-gray">PROFILE</button>
-														<div class="w3-dropdown-content w3-bar-block w3-border">
-															<%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %><br>
-															<a href = "admin"> Aministration section<br>
-															<a href = "blazer/dashboards/1-dashboard-query"> Dashboard employee<br>
-															<%= link_to('Logout', destroy_user_session_path, method: :delete) %>     
-														</div>
+													<div class="w3-dropdown-content w3-bar-block w3-border">
+														<%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %><br>
+														<a href = "admin"> Aministration section<br>
+														<a href = "blazer/dashboards/1-dashboard-query"> Dashboard employee<br>
+														<%= link_to('Logout', destroy_user_session_path, method: :delete) %>     
+													</div>
 												</div>
 														<%# </div>
 												</li>     %>
@@ -164,14 +166,7 @@
 													</div>
 												</li>
 											</li>
-										<% end %>
-<%# <li>							 %>
-
-													</div>
-												  </div>
-
-												</div>
-											</div>
+										<% end %>							
 										</div>
 									</li>
 								</ul>
@@ -180,8 +175,7 @@
 					</div>
 				</header>
 				<!-- /Top Nav -->
-
-			</div>
+		</div>
 		
 <%# #######################	 %>
        <%= yield %>

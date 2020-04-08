@@ -16,13 +16,6 @@ class InterventionsController < ApplicationController
   def new
     @intervention = Intervention.new(intervention_params)
       p ("================================= NEW ===============================")
-      puts params[:customer] 
-      if params[:customer].present?
-          @buildings = Cutomer.find(params[:customer]).buildings
-      else
-          @buildings = Building.all
-      end
-
 
   end
 
@@ -42,18 +35,18 @@ class InterventionsController < ApplicationController
 
     respond_to do |format|
       if @intervention.save
+        p ("+++++++++++++++++ Save OK +++++++++++++++++")
+        puts ("intervention parameters: ")
+        puts  intervention_params
         format.html { redirect_to @intervention, notice: 'Intervention was successfully created.' }
         format.json { render :show, status: :created, location: @intervention }
       else
+        p ("$$$$$$$$$$$$ not saved - from controller $$$$$$$$$$$$$$$")
         format.html { render :new }
         format.json { render json: @intervention.errors, status: :unprocessable_entity }
       end
     end
   end
-
-private def intervention_params
-  params.require(:intervention).permit(:author_id, :customer_id, :building_id, :battery_id, :column_id, :elevator_id, :employeeID, :start_date, :end_date, :result, :report, :status)
-end
 
   # PATCH/PUT /interventions/1
   # PATCH/PUT /interventions/1.json
@@ -87,6 +80,9 @@ end
 
     # Only allow a list of trusted parameters through.
     def intervention_params
-      params.fetch(:intervention, {})
+      params.fetch(:intervention, {}).permit(:author_id, :customer_id, :building_id, :battery_id, :column_id, :elevator_id, :employeeID, :start_date, :end_date, :result, :report, :status)
+      # params.permit(:author_id, :customer_id, :building_id, :battery_id, :column_id, :elevator_id, :employeeID, :start_date, :end_date, :result, :report, :status)
     end
+
+
 end

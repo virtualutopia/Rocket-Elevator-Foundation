@@ -1,4 +1,21 @@
 <p id="notice"><%= notice %></p>
+<div class="container">
+    <br>
+    <h3> New intervention</h3> 
+    <div class="row">
+    <div class="col-md-4">
+        <p>Author ID: <%= @intervention.author_id %></p>
+        <p>Intervention ID: <%= @intervention.id %></p>
+        <p> Customer ID: <%= @intervention.customer_id%></p>
+        <p>Building ID: <%= @intervention.building_id%></p>
+    </div>
+    <div class="col-md-4">
+        <p>Employee ID: <%= @intervention.employee_id%></p>
+        <p>Report: <%= @intervention.report%></p>
+    </div>
+    </div>
+    <%= link_to 'Edit', edit_intervention_path(@intervention), class: 'btn btn-success btn-sm'%> |
+    <%= link_to 'Back', interventions_path, class: 'btn btn-success btn-sm' %>
 
-<%= link_to 'Edit', edit_intervention_path(@intervention) %> |
-<%= link_to 'Back', interventions_path %>
+</div>
+
