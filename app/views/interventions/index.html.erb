@@ -1,11 +1,33 @@
+<head>
+<style>
+  .table_interventions{font-size:15px}
+</style>
+</head>
+
+<body>
+
+<%# ----- To give the access to the employees - part 1/2 ----------- %>
+<% if user_signed_in? && current_user.is_employee(current_user.email)  %>
+
+
 <p id="notice"><%= notice %></p>
 <br>
 <br>
-<h1>Interventions</h1>
 
-<table>
+<div class="container">
+<h1>Interventions</h1>
+<table class="table_interventions">
   <thead>
     <tr>
+      
+      <th>Author ID</th>
+      <th>Customer ID</th>
+      <th>Building ID</th>
+      <th>Employee ID</th>
+      <th>Status</th>
+      <th>Result</th>
+      <th></th>
+      <th></th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -13,17 +35,35 @@
   <tbody>
     <% @interventions.each do |intervention| %>
       <tr>
-        <td><%= link_to 'Show', intervention %></td>
-        <td><%= link_to 'Edit', edit_intervention_path(intervention) %></td>
-        <td><%= link_to 'Destroy', intervention, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= intervention.author_id %></td>
+        <td><%= intervention.customer_id %></td>
+        <td><%= intervention.building_id %></td>
+        <td><%= intervention.employee_id %></td>
+        <td><%= intervention.status %></td>
+        <td><%= intervention.result %></td>
+        
+        
+        <td><%= link_to 'Show', intervention, class: 'btn btn-success btn-sm'  %></td>
+        <td><%= link_to 'Edit', edit_intervention_path(intervention), class: 'btn btn-success btn-sm'  %></td>
+        <%# <td><%= link_to 'Destroy', intervention, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-success btn-sm'  %>
+        <%# </td> %>
       </tr>
     <% end %>
   </tbody>
 </table>
+<%= link_to 'New Intervention', new_intervention_path, class: 'btn btn-success btn-md' %>
+</div>
 
-<br>
-
-
-<%= link_to 'New Intervention', new_intervention_path %>
+<%# ----- To give the access to the employees - part 2/2 ----------- %>
+<% else %>
+<br><br><br> 
+<br><br><br>
+    <div class = "container">
+        <h1>This page is reserved to the Employees</h1>
+        <h4>Please Login with your employee code</h4>
+        <%= link_to "Login", new_user_session_path, :class => 'btn btn-warning'  %><br>														
+    </div>
+<% end %>
+</body>
 
 
