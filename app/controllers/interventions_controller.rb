@@ -118,6 +118,22 @@ class InterventionsController < ApplicationController
     format.json { render :json => @elevators }
     end
   end
+
+   # Zendesk
+  #  ZendeskAPI::Ticket.create!($client, :subject => "Test Ticket", :comment => { :value => "This is a test" }, :submitter_id => client.current_user.id, :priority => "urgent")
+
+   # ZendeskAPI::Ticket.create!($client, 
+   #   :subject => "#{@lead.full_name} from #{@lead.business_name}",
+   #   :comment => { :value => "The contact #{@lead.full_name} from company #{@lead.business_name} can be reached 
+   #   at email #{@lead.email} and at phone number #{@lead.phone}. 
+   #   #{@lead.department} has a project named #{@lead.project_name} which would require contribution from Rocket Elevators. 
+   #   #{@lead.project_description}
+   #   Attached Message: #{@lead.message}
+   #   The Contact uploaded an attachment"},
+   #   :type => "question",
+   #   :priority => "normal")
+     
+     # redirect_to "/index"
   # ====== /Cascade menus ===========
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -130,6 +146,4 @@ class InterventionsController < ApplicationController
       params.fetch(:intervention, {}).permit(:author_id, :customer_id, :building_id, :battery_id, :column_id, :elevator_id, :employeeID, :start_date, :end_date, :result, :report, :status)
       # params.permit(:author_id, :customer_id, :building_id, :battery_id, :column_id, :elevator_id, :employeeID, :start_date, :end_date, :result, :report, :status)
     end
-
-
 end

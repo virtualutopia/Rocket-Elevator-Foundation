@@ -40,3 +40,4 @@ $client = ZendeskAPI::Client.new do |config|
   # When getting the error 'hostname does not match the server certificate'
   # use the API at https://yoursubdomain.zendesk.com/api/v2
 end
+
