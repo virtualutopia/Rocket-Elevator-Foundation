@@ -28,6 +28,11 @@ gem 'blazer'
 
 gem 'sendgrid-ruby'
 
+
+gem 'figaro'
+
+gem 'twilio-ruby'
+
 gem "font-awesome-rails"
 
 gem 'geocoder'
@@ -111,6 +116,10 @@ gem 'http'
 gem 'figaro'
 gem 'pry-byebug'
 
-gem 'zendesk_api', git: 'https://github.com/zendesk/zendesk_api_client_rb'
+gem 'zendesk_api', git: 'https://github.com/zendesk/zendesk_api_client_rb.git'
 
 gem 'graphiql-rails', group: :development
+
+
+gem 'ed25519', '~> 1.2'
+gem 'bcrypt_pbkdf', '~> 1'
