@@ -3,7 +3,8 @@ module Types
   class QueryType < Types::BaseObject
     # Add root-level fields here.
     # They will be entry points for queries on your schema.
-    $conn = PG.connect("host=localhost port=5432 dbname=rocketelevators_api password=psql");
+    $conn = PG.connect(ENV['POSTEGRES']);
+    # $conn = PG.connect("host=localhost port=5432 dbname=rocketelevators_api password=psql");
 
     field :interventions, [InterventionType], null: false do
       argument :id, ID, required: true
