@@ -16,6 +16,7 @@
   <div class="row">
     <div class="col-md-5">
     <h1 class="form_title">Intervention Case</h1>
+      <%= f.hidden_field :author_id, { :value => current_user.id } %>
       <div class="control-group">
         <%= f.label :customer_id, class:'control-label'%>
         <div class="controls">
@@ -104,41 +105,18 @@
     $("#intervention_customer_id").change(function() {
       
       if(cust == ''){
-        
-        // document.getElementById("intervention_building_id").style.visibility = "hidden";
          
       }else{
-        // document.getElementById("intervention_building_id").style.visibility = "visible";
+        
         build.css("visibility", "visible");
       }
       var selected_customer_id = $(this).val();
       console.log( $(this).val() );
 
-      // $.ajax({
-      //   url: "/interventions/get_buildings_for_customer",
-      //   method: "GET",  
-      //   dataType: "json",
-      //   data: {customer_id: selected_customer_id},
-      //   error: function (xhr, status, error) {
-      //     	console.error('AJAX Error: ' + status + error);
-      //   },
-      //   success: function (response) {
-      //     console.log(response);
-      //     var buildings = response["buildings"];
-      //     $("#intervention_building_id").empty();
-
-      //     $("#intervention_building_id").append('<option>Select Buildings</option>');
-      //     for(var i = 0; i < buildings.length; i++){
-      //       $("#intervention_building_id").append('<option value="' + buildings[i]["id"] + '">' +buildings[i]["id"] + '</option>');
-      //     }
-      //   }
-      // });
-
       // Serge Savoi notes
       var selected_customer_id = $(this).val();
       $.get('/interventions/get_buildings_for_customer', {customer_id: selected_customer_id}, function(result) {
-        console.log('return result from server: ');
-        console.log(result);
+
         var buildings = result["buildings"];
         $("#intervention_building_id").empty();
         $("#intervention_building_id").append('<option>Select Building</option>');
@@ -162,8 +140,7 @@
       console.log('selected building id: ')
       console.log( $(this).val() );
       $.get('/interventions/get_batteries_for_building', {building_id: selected_building_id}, function(result) {
-        console.log('return result from server: ');
-        console.log(result);
+
         $("#intervention_battery_id").empty();
         $("#intervention_battery_id").append('<option>Select Battery</option>');
         $.each(result, function(i, j) {
@@ -185,8 +162,7 @@
       console.log('selected building id: ')
       console.log( $(this).val() );
       $.get('/interventions/get_columns_for_battery', {battery_id: selected_battery_id}, function(result) {
-        console.log('return result from server: ');
-        console.log(result);
+
         $("#intervention_column_id").empty();
         $("#intervention_column_id").append('<option>None</option>');
         $.each(result, function(i, j) {
@@ -208,8 +184,7 @@
       console.log('selected building id: ')
       console.log( $(this).val() );
       $.get('/interventions/get_elevators_for_column', {column_id: selected_column_id}, function(result) {
-        console.log('return result from server: ');
-        console.log(result);
+
         $("#intervention_elevator_id").empty();
         $("#intervention_elevator_id").append('<option>None</option>');
         $.each(result, function(i, j) {

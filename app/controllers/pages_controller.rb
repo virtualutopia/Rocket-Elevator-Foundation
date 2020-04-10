@@ -1,4 +1,4 @@
-require 'pry-byebug'
+# require 'pry-byebug'
 class PagesController < ApplicationController
   
   before_action :authenticate_user!, only: [:dashboard]
@@ -63,21 +63,12 @@ class PagesController < ApplicationController
       The Contact uploaded an attachment"},
       :type => "question",
       :priority => "normal")
-
-      # begin
-      #   @client.tickets.find!(id: 1)
-      # rescue ZendeskAPI::Error::NetworkError => e
-      #   @response = nil
-      #   raise "error: #{e.response[:body]['error']} - status: #{e.response[:status]}"
-      # end
-      
-    #   redirect_to "/index"
   end
     
     
-def home
-   
-end
+  def home
+    
+  end
 
   #  def login
   #    session[:test] = "Valeur de test"
@@ -105,7 +96,7 @@ end
 
     def admin
       @all_Quotes = Quote.all
-
+      $current_user_id = @current_user.id
       if @current_user.try(:title) != "employee"
         flash[:error] = "ACCES DENIED"
         return redirect_to request.referrer || "/home"
@@ -164,14 +155,6 @@ end
 
   end
 
-  def create
-    
-    User.create name: params[:name]
-  
-
-    redirect_to "/userinfo"
-  end
-
   def update
 
     @le_user = User.find(params[:id])
@@ -180,8 +163,6 @@ end
     redirect_to "/userinfo/#{params[:id]}"
 
   end
-
-
   
   def residential
   end

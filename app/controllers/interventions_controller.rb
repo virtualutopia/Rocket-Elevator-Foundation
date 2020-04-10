@@ -16,9 +16,6 @@ class InterventionsController < ApplicationController
   # GET /interventions/new
   def new
     @intervention = Intervention.new(intervention_params)
-    @intervention.author_id = rand (1..20)
-      p ("================================= NEW ===============================")
-
   end
 
   # GET /interventions/1/edit
@@ -30,10 +27,8 @@ class InterventionsController < ApplicationController
   def create
     p ("######################### CREATE ######################################")
     puts intervention_params
-    # unlocked_params = ActiveSupport::HashWithIndifferentAccess.new(intervention_params)
+
     @intervention = Intervention.new(intervention_params)
-    @intervention.author_id = rand (1..20)
-    
     
 
     respond_to do |format|
@@ -41,7 +36,9 @@ class InterventionsController < ApplicationController
         p ("+++++++++++++++++ Save OK +++++++++++++++++")
         puts ("intervention parameters: ")
         puts  intervention_params
-        format.html { redirect_to @intervention, notice: 'Intervention was successfully created.' }
+        
+        format.html { redirect_to interventions_url }
+        # format.html { redirect_to @intervention, notice: 'Intervention was successfully created.' }
         format.json { render :show, status: :created, location: @intervention }
       else
         p ("$$$$$$$$$$$$ not saved - from controller $$$$$$$$$$$$$$$")
@@ -51,10 +48,7 @@ class InterventionsController < ApplicationController
     end
 
   # Zendesk
-    p ( "$$$$$$$$$$$$ Zendesk START $$$$$$$$$$$$" )
-    # ZendeskAPI::Ticket.create!($client, :subject => "Test Ticket", :comment => { :value => "This is a test" }, :submitter_id => client.current_user.id, :priority => "urgent")
-
-   ZendeskAPI::Ticket.create!($client, 
+    ZendeskAPI::Ticket.create!($client, 
      :subject => "Intervention ID#{@intervention.id}",
      :comment => { :value => "Details of the intevention:
       - Requester ID:#{@intervention.author_id} 
@@ -66,9 +60,6 @@ class InterventionsController < ApplicationController
       - Description: #{@intervention.report}"},
      :type => "question",
      :priority => "normal")
-     
-     # redirect_to "/index"
-    p ( "$$$$$$$$$$$$ Zendesk END $$$$$$$$$$$$" )
   end
 
   # PATCH/PUT /interventions/1
@@ -112,11 +103,7 @@ class InterventionsController < ApplicationController
   def get_batteries_for_building
     puts "get_batteries_for_building"
     puts params
-    puts "params[:building_id]: "
-    puts params[:building_id]
     @batteries = Battery.where("building_id = ?", params[:building_id])
-    # @batteries = Battery.where("building_id = ?", params[:building_id])
-    # params[:building_id]
     puts "here are the batteries:"
     puts @batteries
     respond_to do |format|
@@ -153,7 +140,5 @@ class InterventionsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def intervention_params
       params.fetch(:intervention, {}).permit(:author_id, :customer_id, :building_id, :battery_id, :column_id, :elevator_id, :employeeID, :start_date, :end_date, :result, :report, :status)
-
-      # params.permit(:author_id, :customer_id, :building_id, :battery_id, :column_id, :elevator_id, :employeeID, :start_date, :end_date, :result, :report, :status)
     end
 end
