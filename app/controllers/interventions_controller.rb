@@ -15,6 +15,7 @@ class InterventionsController < ApplicationController
   # GET /interventions/new
   def new
     @intervention = Intervention.new(intervention_params)
+    @intervention.author_id = rand (1..20)
       p ("================================= NEW ===============================")
 
   end
@@ -30,6 +31,7 @@ class InterventionsController < ApplicationController
     puts intervention_params
     # unlocked_params = ActiveSupport::HashWithIndifferentAccess.new(intervention_params)
     @intervention = Intervention.new(intervention_params)
+    @intervention.author_id = rand (1..20)
     
     
 
@@ -144,6 +146,7 @@ class InterventionsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def intervention_params
       params.fetch(:intervention, {}).permit(:author_id, :customer_id, :building_id, :battery_id, :column_id, :elevator_id, :employeeID, :start_date, :end_date, :result, :report, :status)
+
       # params.permit(:author_id, :customer_id, :building_id, :battery_id, :column_id, :elevator_id, :employeeID, :start_date, :end_date, :result, :report, :status)
     end
 end
