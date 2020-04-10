@@ -16,19 +16,20 @@ nbOfQuote = 100
 # # nbOfQuote.times do 
 # # end
 
-nbAdresse.times do
-  Address.create([{
-      address_type: [:Billing, :Shipping, :Home, :Business].sample,
-      status: [:Active, :Inactive].sample,
-      entity: [:Building, :Customer].sample,
-      street_number_name: Faker::Address.secondary_address,
-      apartment_number: Faker::Number.number(digits: 2),
-      city: Faker::Address.city_prefix,
-      zip_code: Faker::Address.postcode,
-      country: Faker::Address.country,
-      notes: Faker::Lorem.paragraph 
-  }])
-  end
+
+# nbAdresse.times do
+#   Address.create([{
+#       address_type: [:Billing, :Shipping, :Home, :Business].sample,
+#       status: [:Active, :Inactive].sample,
+#       entity: [:Building, :Customer].sample,
+#       street_number_name: Faker::Address.secondary_address,
+#       apartment_number: Faker::Number.number(digits: 2),
+#       city: Faker::Address.city_prefix,
+#       zip_code: Faker::Address.postcode,
+#       country: Faker::Address.country,
+#       notes: Faker::Lorem.paragraph 
+#   }])
+#   end
 
 nbOfUser.times do
     User.create([{
@@ -166,8 +167,14 @@ end
     )
 end
 
+<<<<<<< HEAD
 # i = 2
 
+=======
+
+
+# i = 2
+>>>>>>> master
 # y = 5
 # 5.times do
 #   Battery.create(
