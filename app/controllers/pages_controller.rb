@@ -63,9 +63,16 @@ class PagesController < ApplicationController
       The Contact uploaded an attachment"},
       :type => "question",
       :priority => "normal")
+
+      # begin
+      #   @client.tickets.find!(id: 1)
+      # rescue ZendeskAPI::Error::NetworkError => e
+      #   @response = nil
+      #   raise "error: #{e.response[:body]['error']} - status: #{e.response[:status]}"
+      # end
       
-      redirect_to "/index"
-    end
+    #   redirect_to "/index"
+  end
     
     
 def home
