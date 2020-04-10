@@ -52,7 +52,7 @@ class PagesController < ApplicationController
     response = sg.client.mail._("send").post(request_body: data)
     puts response.as_json
     puts "********************************************"
-    
+    binding.pry{} 
     ZendeskAPI::Ticket.create!($client, 
       :subject => "#{@lead.full_name} from #{@lead.business_name}",
       :comment => { :value => "The contact #{@lead.full_name} from company #{@lead.business_name} can be reached 
