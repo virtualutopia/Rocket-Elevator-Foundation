@@ -4,12 +4,16 @@ $client = ZendeskAPI::Client.new do |config|
   # Mandatory:
 
   config.url = ENV['ZENDESK_URL'] # e.g. https://mydesk.zendesk.com/api/v2
-
+  p("======================zendesk url:")
+  p config.url 
   # Basic / Token Authentication
   config.username = ENV['ZENDESK_USERNAME']
-
+  p("======================zendesk uid:")
+  p config.username
   # Choose one of the following depending on your authentication choice
   config.token = ENV['ZENDESK_TOKEN']
+  p("======================zendesk Token:")
+  p config.token
 #   config.password = "your zendesk password"
 
   # OAuth Authentication

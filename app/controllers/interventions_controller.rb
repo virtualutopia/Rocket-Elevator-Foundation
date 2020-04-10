@@ -1,3 +1,4 @@
+require 'zendesk_api'
 class InterventionsController < ApplicationController
   before_action :set_intervention, only: [:show, :edit, :update, :destroy]
 
@@ -48,6 +49,24 @@ class InterventionsController < ApplicationController
         format.json { render json: @intervention.errors, status: :unprocessable_entity }
       end
     end
+
+  # Zendesk
+    p ( "$$$$$$$$$$$$ Zendesk START $$$$$$$$$$$$" )
+    # ZendeskAPI::Ticket.create!($client, :subject => "Test Ticket", :comment => { :value => "This is a test" }, :submitter_id => client.current_user.id, :priority => "urgent")
+
+   # ZendeskAPI::Ticket.create!($client, 
+   #   :subject => "#{@lead.full_name} from #{@lead.business_name}",
+   #   :comment => { :value => "The contact #{@lead.full_name} from company #{@lead.business_name} can be reached 
+   #   at email #{@lead.email} and at phone number #{@lead.phone}. 
+   #   #{@lead.department} has a project named #{@lead.project_name} which would require contribution from Rocket Elevators. 
+   #   #{@lead.project_description}
+   #   Attached Message: #{@lead.message}
+   #   The Contact uploaded an attachment"},
+   #   :type => "question",
+   #   :priority => "normal")
+     
+     # redirect_to "/index"
+    p ( "$$$$$$$$$$$$ Zendesk END $$$$$$$$$$$$" )
   end
 
   # PATCH/PUT /interventions/1
@@ -121,21 +140,7 @@ class InterventionsController < ApplicationController
     end
   end
 
-   # Zendesk
-  #  ZendeskAPI::Ticket.create!($client, :subject => "Test Ticket", :comment => { :value => "This is a test" }, :submitter_id => client.current_user.id, :priority => "urgent")
-
-   # ZendeskAPI::Ticket.create!($client, 
-   #   :subject => "#{@lead.full_name} from #{@lead.business_name}",
-   #   :comment => { :value => "The contact #{@lead.full_name} from company #{@lead.business_name} can be reached 
-   #   at email #{@lead.email} and at phone number #{@lead.phone}. 
-   #   #{@lead.department} has a project named #{@lead.project_name} which would require contribution from Rocket Elevators. 
-   #   #{@lead.project_description}
-   #   Attached Message: #{@lead.message}
-   #   The Contact uploaded an attachment"},
-   #   :type => "question",
-   #   :priority => "normal")
-     
-     # redirect_to "/index"
+ 
   # ====== /Cascade menus ===========
   private
     # Use callbacks to share common setup or constraints between actions.
