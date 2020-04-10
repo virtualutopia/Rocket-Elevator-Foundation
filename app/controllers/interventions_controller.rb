@@ -54,16 +54,18 @@ class InterventionsController < ApplicationController
     p ( "$$$$$$$$$$$$ Zendesk START $$$$$$$$$$$$" )
     # ZendeskAPI::Ticket.create!($client, :subject => "Test Ticket", :comment => { :value => "This is a test" }, :submitter_id => client.current_user.id, :priority => "urgent")
 
-   # ZendeskAPI::Ticket.create!($client, 
-   #   :subject => "#{@lead.full_name} from #{@lead.business_name}",
-   #   :comment => { :value => "The contact #{@lead.full_name} from company #{@lead.business_name} can be reached 
-   #   at email #{@lead.email} and at phone number #{@lead.phone}. 
-   #   #{@lead.department} has a project named #{@lead.project_name} which would require contribution from Rocket Elevators. 
-   #   #{@lead.project_description}
-   #   Attached Message: #{@lead.message}
-   #   The Contact uploaded an attachment"},
-   #   :type => "question",
-   #   :priority => "normal")
+   ZendeskAPI::Ticket.create!($client, 
+     :subject => "Intervention ID#{@intervention.id}",
+     :comment => { :value => "Details of the intevention:
+      - Requester ID:#{@intervention.author_id} 
+      - Customer :#{@intervention.customer_id} 
+      - Building ID: #{@intervention.building_id} 
+      - Column ID: #{@intervention.column_id}
+      - Elevator ID: #{@intervention.elevator_id} 
+      - Assigned employee ID: #{@intervention.employee_id} 
+      - Description: #{@intervention.report}"},
+     :type => "question",
+     :priority => "normal")
      
      # redirect_to "/index"
     p ( "$$$$$$$$$$$$ Zendesk END $$$$$$$$$$$$" )
