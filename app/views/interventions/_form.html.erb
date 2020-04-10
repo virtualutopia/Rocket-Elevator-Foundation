@@ -26,28 +26,28 @@
       <div class="control-group">
         <%= f.label :building_id, class:'control-label'%>
         <div class="controls">
-          <%= grouped_collection_select( :intervention, :building_id, Customer.order(:business_name), :buildings, :business_name, :id, :id, { :multiple => false} )%>
+          <%= grouped_collection_select( :intervention, :building_id, Customer.order(:business_name), :buildings, :business_name, :id, :id, {prompt: 'Select Building'}, { :multiple => false} )%>
         </div>
       </div>   
       <br> 
       <div class="control-group">
-        <%= f.label :battery_id, class:'control-label'%>
+        <%= f.label :battery_id, class:'control-label' %>
         <div class="controls">
-          <%= collection_select( :intervention, :battery_id, Battery.all, :id, :id, { :multiple => false} )%>
+          <%= collection_select( :intervention, :battery_id, Battery.all, :id, :id,{prompt: 'Select Battry'}, { :multiple => false} ) %>
         </div>
-      </div>
+      </div> 
       <br>
       <div class="control-group">
         <%= f.label :column_id, class:'control-label'%>
         <div class="controls">
-          <%= collection_select( :intervention, :column_id, Column.all, :id, :id, { :multiple => false} )%>
+          <%= collection_select( :intervention, :column_id, Column.all, :id, :id, {prompt: 'None'}, { :multiple => false} )%>
         </div>
       </div> 
       <br>
       <div class="control-group">
         <%= f.label :elevator_id, class:'control-label'%>
         <div class="controls">
-          <%= collection_select( :intervention, :elevator_id, Elevator.all, :id, :id, { :multiple => false} )%>
+          <%= collection_select( :intervention, :elevator_id, Elevator.all, :id, :id, {prompt: 'None'}, { :multiple => false} )%>
         </div>
       </div> 
       <br>  
@@ -88,16 +88,28 @@
 
     cust = $("#intervention_customer_id");
     build = $('#intervention_building_id');
-    batt = $('intervention_battery_id');
-    col = $('intervention_column_id');
-    elev = $('intervention_elevator_id');
+    batt = $('#intervention_battery_id');
+    col = $('#intervention_column_id');
+    elev = $('#intervention_elevator_id');
+
+   
+    // build.css("visibility", "hidden");
+    
+    
+    build.css("visibility", "hidden");
+    batt.css("visibility", "hidden");
+    col.css("visibility", "hidden");
+    elev.css("visibility", "hidden");
 // Buildings dropdown menu
     $("#intervention_customer_id").change(function() {
       
       if(cust == ''){
-        document.getElementById("intervention_building_id").style.visibility = "hidden";
+        
+        // document.getElementById("intervention_building_id").style.visibility = "hidden";
+         
       }else{
-        document.getElementById("intervention_building_id").style.visibility = "visible";
+        // document.getElementById("intervention_building_id").style.visibility = "visible";
+        build.css("visibility", "visible");
       }
       var selected_customer_id = $(this).val();
       console.log( $(this).val() );
@@ -129,7 +141,7 @@
         console.log(result);
         var buildings = result["buildings"];
         $("#intervention_building_id").empty();
-        $("#intervention_building_id").append('<option>Select Buildings</option>');
+        $("#intervention_building_id").append('<option>Select Building</option>');
         $.each(result, function(i, j) {
           var row = '<option value="' + j.id + '">' + j.id + '</option>';
           console.log(row);
@@ -141,9 +153,10 @@
   // Batteries dropdown menu
   $("#intervention_building_id").change(function() {
       if(build == ''){
-        document.getElementById("intervention_battery_id").style.visibility = "hidden";
+        // document.getElementById("intervention_battery_id").style.visibility = "hidden";
+        
       }else{
-        document.getElementById("intervention_battery_id").style.visibility = "visible";
+        batt.css("visibility", "visible");
       }
       var selected_building_id = $(this).val();
       console.log('selected building id: ')
@@ -164,9 +177,9 @@
   // Column dropdown menu
   $("#intervention_battery_id").change(function() {
       if(batt == ''){
-        document.getElementById("intervention_column_id").style.visibility = "hidden";
+        // document.getElementById("intervention_column_id").style.visibility = "hidden";
       }else{
-        document.getElementById("intervention_column_id").style.visibility = "visible";
+       col.css("visibility", "visible");
       }
       var selected_battery_id = $(this).val();
       console.log('selected building id: ')
@@ -187,9 +200,9 @@
   // Elevator dropdown menu
   $("#intervention_column_id").change(function() {
       if(col == ''){
-        document.getElementById("intervention_elevator_id").style.visibility = "hidden";
+        // document.getElementById("intervention_elevator_id").style.visibility = "hidden";
       }else{
-        document.getElementById("intervention_elevator_id").style.visibility = "visible";
+        elev.css("visibility", "visible");
       }
       var selected_column_id = $(this).val();
       console.log('selected building id: ')
