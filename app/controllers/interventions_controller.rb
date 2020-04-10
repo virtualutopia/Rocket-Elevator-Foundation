@@ -1,3 +1,4 @@
+require 'zendesk_api'
 class InterventionsController < ApplicationController
   before_action :set_intervention, only: [:show, :edit, :update, :destroy]
 
@@ -48,6 +49,26 @@ class InterventionsController < ApplicationController
         format.json { render json: @intervention.errors, status: :unprocessable_entity }
       end
     end
+
+  # Zendesk
+    p ( "$$$$$$$$$$$$ Zendesk START $$$$$$$$$$$$" )
+    # ZendeskAPI::Ticket.create!($client, :subject => "Test Ticket", :comment => { :value => "This is a test" }, :submitter_id => client.current_user.id, :priority => "urgent")
+
+   ZendeskAPI::Ticket.create!($client, 
+     :subject => "Intervention ID#{@intervention.id}",
+     :comment => { :value => "Details of the intevention:
+      - Requester ID:#{@intervention.author_id} 
+      - Customer :#{@intervention.customer_id} 
+      - Building ID: #{@intervention.building_id} 
+      - Column ID: #{@intervention.column_id}
+      - Elevator ID: #{@intervention.elevator_id} 
+      - Assigned employee ID: #{@intervention.employee_id} 
+      - Description: #{@intervention.report}"},
+     :type => "question",
+     :priority => "normal")
+     
+     # redirect_to "/index"
+    p ( "$$$$$$$$$$$$ Zendesk END $$$$$$$$$$$$" )
   end
 
   # PATCH/PUT /interventions/1
@@ -120,6 +141,8 @@ class InterventionsController < ApplicationController
     format.json { render :json => @elevators }
     end
   end
+
+ 
   # ====== /Cascade menus ===========
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -133,6 +156,4 @@ class InterventionsController < ApplicationController
 
       # params.permit(:author_id, :customer_id, :building_id, :battery_id, :column_id, :elevator_id, :employeeID, :start_date, :end_date, :result, :report, :status)
     end
-
-
 end
