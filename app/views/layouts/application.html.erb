@@ -83,8 +83,10 @@
 											SERVICES
 										</a>
 										<ul class="dropdown-menu">
-											<li><a href="corporate.html">Commercial Services</a></li>
-											<li><a href="residential.html">Residential Services</a></li>
+											<%# <li><a href="corporate.html">Commercial Services</a></li> %>
+											<%# <li><a href="residential.html">Residential Services</a></li> %>
+											<%= link_to "Comercial Services", corporate_path %>
+											<%= link_to "Residential Services", residential_path %>
 										</ul>
 									</li>
 									<li><!-- portfolio -->
@@ -109,7 +111,8 @@
 									</li>
 									<%# <% if user_signed_in? && current_user.is_employee(current_user.email) %> 
 										<li><!-- INTERVENTION -->
-											<a href="interventions.html">Interventions</a>
+											<%# <a href="interventions.html">Interventions</a> %>
+											<%= link_to "Interventions", interventions_path %>
 										</li>
 									
 									<%# </li> %>
