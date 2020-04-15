@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
   
 
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+         :recoverable, :rememberable, :validatable, :lockable
 
   def is_employee(email)
  
