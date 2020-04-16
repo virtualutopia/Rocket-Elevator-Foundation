@@ -67,7 +67,7 @@
       </div> 
       <br>  
       <div class="control-group">
-        <%= f.label :report, class:'control-label'%>
+        <%= f.label :report, 'Description', class:'control-label'%>
         <div class="controls">
           <%= f.text_area(:report, {:class => 'form-control'})%>
         </div>
@@ -109,6 +109,9 @@
       }else{
         
         build.css("visibility", "visible");
+        batt.css("visibility", "hidden");
+        col.css("visibility", "hidden");
+        elev.css("visibility", "hidden");
       }
       var selected_customer_id = $(this).val();
       console.log( $(this).val() );
@@ -135,6 +138,8 @@
         
       }else{
         batt.css("visibility", "visible");
+        col.css("visibility", "hidden");
+        elev.css("visibility", "hidden");
       }
       var selected_building_id = $(this).val();
       console.log('selected building id: ')
@@ -157,6 +162,7 @@
         // document.getElementById("intervention_column_id").style.visibility = "hidden";
       }else{
        col.css("visibility", "visible");
+       elev.css("visibility", "hidden");
       }
       var selected_battery_id = $(this).val();
       console.log('selected building id: ')
