@@ -73,9 +73,8 @@
 								-->
 								<ul id="topMain" class="nav nav-pills nav-main nav-onepage">
 									<li class="active"><!-- HOME -->
-										<a href="index">
-											HOME
-										</a>
+										<%# <a href="index">	HOME </a> %>
+										<%= link_to "HOME", index_path %>
 									</li>
 
 									<li class="dropdown"> <!-- SERVICES  - DROPDOWN MENU-->
@@ -89,7 +88,7 @@
 											<%= link_to "Residential Services", residential_path %>
 										</ul>
 									</li>
-									<li><!-- portfolio -->
+									<%# <li><!-- portfolio -->
 										<a href="#portfolio">
 											PORTFOLIO
 										</a>
@@ -103,7 +102,7 @@
 										<a href="#clients">
 											CLIENTS
 										</a>
-									</li>
+									</li> %>
 									<li><!-- CONTACT -->
 										<a href="#contact">
 											CONTACT
