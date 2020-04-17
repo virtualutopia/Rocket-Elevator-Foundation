@@ -10,6 +10,14 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :validatable, :lockable, :timeoutable
 
   validate :password_complexity
+  validates :firstName, format: { with: /\A[A-Za-z0-9-\/\.\s]*\z/,
+    message: "accepts only alphanumeric - . space" }
+  validates :lastName, format: { with: /\A[A-Za-z0-9-\/\.\s]*\z/,
+    message: "accepts only alphanumeric - . space" }
+  validates :job_title, format: { with: /\A[A-Za-z0-9-\/\.\s]*\z/,
+    message: "accepts only alphanumeric - . space" }
+  validates :phoneNumber, numericality: { only_integer: true ,
+    message: "accepts only digits" }
   def is_employee(email)
  
     @all_Employees = Employee.all
