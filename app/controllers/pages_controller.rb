@@ -63,6 +63,8 @@ class PagesController < ApplicationController
       The Contact uploaded an attachment"},
       :type => "question",
       :priority => "normal")
+
+    redirect_to "/"
   end
     
     
