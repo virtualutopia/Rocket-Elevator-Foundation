@@ -12,6 +12,12 @@
 # the additional setup, and require it from the spec files that actually need
 # it.
 #
+# Added by Farid:
+require 'devise'
+# To include application.yml variables into the tests
+ENV["RAILS_ENV"] ||= 'test'
+require File.expand_path("../../config/environment", __FILE__)
+
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 RSpec.configure do |config|
   # rspec-expectations config goes here. You can use an alternate
@@ -83,7 +89,7 @@ RSpec.configure do |config|
   # Print the 10 slowest examples and example groups at the
   # end of the spec run, to help surface which specs are running
   # particularly slow.
-  config.profile_examples = 0
+  config.profile_examples = 2
 
   # Run specs in random order to surface order dependencies. If you find an
   # order dependency and want to debug it, you can fix the order by providing
@@ -104,6 +110,10 @@ RSpec.configure do |config|
   #     with(headers: {'Accept'=>'*/*', 'User-Agent'=>'Ruby'}).
   #     to_return(status: 200, body: "stubbed response", headers: {})
   # end
+
+  # Added by Farid:
+  # Devise configuration to test login page
+  config.include Devise::TestHelpers, :type => :controller  
 end
 
 

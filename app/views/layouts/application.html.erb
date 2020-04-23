@@ -180,7 +180,8 @@
 				</header>
 				<!-- /Top Nav -->
 		</div>
-<%= ElevatorMedia::Streamer.getContent.html_safe %>		
+<%= streamer = ElevatorMedia::Streamer.new %>
+<%= streamer.getContent.html_safe %>
 <%# #######################	 %>
 
        <%= yield %>
