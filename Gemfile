@@ -120,6 +120,14 @@ gem 'zendesk_api', git: 'https://github.com/zendesk/zendesk_api_client_rb.git'
 
 gem 'graphiql-rails', group: :development
 
-
+#deploy related gems
 gem 'ed25519', '~> 1.2'
 gem 'bcrypt_pbkdf', '~> 1'
+
+#TDD related gem
+# Add rspec-rails to both the :development and :test groups of your app’s Gemfile:
+group :development, :test do
+  gem 'rspec', '~> 3.9'
+  gem 'rspec-rails', '~> 4.0.0'
+end
+gem 'webmock', '~> 3.8', '>= 3.8.3'

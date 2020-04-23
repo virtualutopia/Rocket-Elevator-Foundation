@@ -33,3 +33,8 @@
 /config/blazer.yml
 
 
+#Ignore RSpec log test
+spec/examples.txt
+
+bin/*
+

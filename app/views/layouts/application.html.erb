@@ -1,3 +1,4 @@
+<%require 'ElevatorMedia' %>
 <!DOCTYPE html>
 <html>
   <head>
@@ -179,8 +180,9 @@
 				</header>
 				<!-- /Top Nav -->
 		</div>
-		
+<%= ElevatorMedia::Streamer.getContent.html_safe %>		
 <%# #######################	 %>
+
        <%= yield %>
 
 <%# #######################	 %>
