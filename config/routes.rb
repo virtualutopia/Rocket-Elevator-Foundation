@@ -63,6 +63,7 @@ Rails.application.routes.draw do
   get 'users/index' => 'pages#index'
   
   get 'users/index' => 'pages#index'
+  get 'users/interventions' => 'interventions#index'
   
   get 'employee' => 'pages#employee'
   

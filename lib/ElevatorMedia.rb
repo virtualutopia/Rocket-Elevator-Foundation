@@ -45,15 +45,16 @@ module ElevatorMedia
          # @canada_statistics ||= {}
          @canada_statistics = self.APIConnect('Canada')
          # p @canada_statistics 
-         output = " <div  class=\"row alert alert-warning\">
-                  
-                  <div class=\"col-md-2\">
-                  <br><img src=""https://rapidapi-prod-collections.s3.amazonaws.com/1934d868-b8b9-40bf-a3a0-a978f007f89d.png>
-                  </div><div class=\"col-md-6\">
-                  <h2 style=\"color:darkblue\">COVID-19 in Canada at #{@canada_statistics['response'][0]['day']}</h2>
-                  Active Cases: #{@canada_statistics['response'][0]['cases']['active']} <br> 
-                  Total Recovered:#{@canada_statistics['response'][0]['cases']['recovered']} <br> 
-                  Total Deaths:#{@canada_statistics['response'][0]['deaths']['total']} </div></div>"
+         output = 
+            " <div  class=\"row alert alert-warning\">      
+            <div class=\"col-md-2\">
+            <br><img src=""https://rapidapi-prod-collections.s3.amazonaws.com/1934d868-b8b9-40bf-a3a0-a978f007f89d.png>
+            </div><div class=\"col-md-6\">
+            <h2 style=\"color:darkblue\">COVID-19 in Canada at #{@canada_statistics['response'][0]['day']}</h2>
+            Active Cases: #{@canada_statistics['response'][0]['cases']['active']} <br> 
+            Total Recovered:#{@canada_statistics['response'][0]['cases']['recovered']} <br> 
+            Total Deaths:#{@canada_statistics['response'][0]['deaths']['total']} 
+            <h2 style=\"color:darkblue\">Stay home and wash your hands</h2></div></div>"
          return output
       end
    end

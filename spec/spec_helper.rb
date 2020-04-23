@@ -12,7 +12,9 @@
 # the additional setup, and require it from the spec files that actually need
 # it.
 #
-
+# Added by Farid:
+require 'devise'
+# To include application.yml variables into the tests
 ENV["RAILS_ENV"] ||= 'test'
 require File.expand_path("../../config/environment", __FILE__)
 
@@ -108,6 +110,10 @@ RSpec.configure do |config|
   #     with(headers: {'Accept'=>'*/*', 'User-Agent'=>'Ruby'}).
   #     to_return(status: 200, body: "stubbed response", headers: {})
   # end
+
+  # Added by Farid:
+  # Devise configuration to test login page
+  config.include Devise::TestHelpers, :type => :controller  
 end
 
 
