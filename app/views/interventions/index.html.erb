@@ -16,6 +16,8 @@
 
 <div class="container">
 <h1>Interventions</h1>
+<%= link_to 'New Intervention', new_intervention_path, class: 'btn btn-success btn-md', name: 'New Intervention', id: 'intervnetion', value: 'intervention' %>
+
 <table class="table_interventions">
   <thead>
     <tr>
@@ -51,7 +53,7 @@
     <% end %>
   </tbody>
 </table>
-<%= link_to 'New Intervention', new_intervention_path, class: 'btn btn-success btn-md' %>
+
 </div>
 
 <%# ----- To give the access to the employees - part 2/2 ----------- %>

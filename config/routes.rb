@@ -63,7 +63,7 @@ Rails.application.routes.draw do
   get 'users/index' => 'pages#index'
   
   get 'users/index' => 'pages#index'
-  get 'users/interventions' => 'interventions#index'
+  
   
   get 'employee' => 'pages#employee'
   
@@ -80,4 +80,10 @@ Rails.application.routes.draw do
 
   
   get 'covid' => 'pages#covid'
+
+  # just for tests RSpec
+  # get 'users/interventions' => 'interventions#index'
+  get '/font/revicons.woff' => 'pages#home'
+  get '/assets/loader.gif' => 'pages#home'
+  get '/font/revicons.ttf' => 'pages#home'
 end

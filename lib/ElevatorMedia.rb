@@ -8,13 +8,10 @@ require 'json'
 
 module ElevatorMedia
    class Streamer
-      # @canada_statistics ||= {}
       def initialize
-         # attr_reader :canada_statistics
          @canada_statistics = {}
       end
-      
-
+   
       def APIConnect(country)
          # --- connect to the API ---
          url = URI("https://covid-193.p.rapidapi.com/statistics/?country=#{country}")
@@ -25,24 +22,21 @@ module ElevatorMedia
       
          request = Net::HTTP::Get.new(url)
          request["x-rapidapi-host"] = 'covid-193.p.rapidapi.com'
-         request["x-rapidapi-key"] = ENV['RAPIDAPI_API_KEY'] #'61ada8fd11mshbacb07369033903p1534d8jsn1c87012efc9b' #ENV['RAPIDAPI_API_KEY']
+         request["x-rapidapi-key"] = ENV['RAPIDAPI_API_KEY'] 
 
          response = http.request(request)
-         # p response
          json_response = JSON.parse(response.body)
          
-         # raise Exception if (response.code != "200" || json_response['results'] == 0 )
          if response.code != "200" || json_response['results'] == 0
-            # p "Bad Request"
             return "Bad Request"
          end
          json_response
-         # --- /connect to the API ---
       end
+      # --- /connect to the API ---
 
-
+      # --- GET CONTENT ---
+      # --- Get, process, and deliver the content ---
       def getContent
-         # @canada_statistics ||= {}
          @canada_statistics = self.APIConnect('Canada')
          # p @canada_statistics 
          output = 
@@ -57,6 +51,7 @@ module ElevatorMedia
             <h2 style=\"color:darkblue\">Stay home and wash your hands</h2></div></div>"
          return output
       end
+      # --- /GET CONTENT ---
    end
 end
 # binding.pry{}
