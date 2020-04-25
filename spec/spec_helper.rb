@@ -14,9 +14,31 @@
 #
 # Added by Farid:
 require 'devise'
+require 'support/controller_helpers'
 # To include application.yml variables into the tests
 ENV["RAILS_ENV"] ||= 'test'
 require File.expand_path("../../config/environment", __FILE__)
+
+# # -------------------------Headless browser-------------------------
+# Capybara.register_driver :chrome do |app|
+#   Capybara::Selenium::Driver.new(app, browser: :chrome)
+# end
+# Capybara.register_driver :headless_chrome do |app|
+#   caps = Selenium::WebDriver::Remote::Capabilities.chrome(loggingPrefs: { browser: 'ALL' })
+#   opts = Selenium::WebDriver::Chrome::Options.new
+#   chrome_args = %w[--headless --window-size=1920,1080 --no-sandbox --disable-dev-shm-usage]
+#   chrome_args.each { |arg| opts.add_argument(arg) }
+#   Capybara::Selenium::Driver.new(app, browser: :chrome, options: opts, desired_capabilities: caps)
+# end
+# Capybara.configure do |config|
+#   # change this to :chrome to observe tests in a real browser
+#   config.javascript_driver = :chrome
+# end
+# # -------------------------/Headless browser-------------------------
+
+
+# User.any_instance.stub(:is_employee).and_return(true)
+
 
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 RSpec.configure do |config|
@@ -89,7 +111,7 @@ RSpec.configure do |config|
   # Print the 10 slowest examples and example groups at the
   # end of the spec run, to help surface which specs are running
   # particularly slow.
-  config.profile_examples = 2
+  # config.profile_examples = 2
 
   # Run specs in random order to surface order dependencies. If you find an
   # order dependency and want to debug it, you can fix the order by providing
@@ -114,6 +136,13 @@ RSpec.configure do |config|
   # Added by Farid:
   # Devise configuration to test login page
   config.include Devise::TestHelpers, :type => :controller  
+  # also related to devise and user stubing
+  config.include Devise::TestHelpers, :type => :controller
+  config.include ControllerHelpers, :type => :controller
+
+
 end
+
+
 
 

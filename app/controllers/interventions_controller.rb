@@ -48,18 +48,18 @@ class InterventionsController < ApplicationController
     end
 
   # Zendesk
-    ZendeskAPI::Ticket.create!($client, 
-     :subject => "Intervention ID#{@intervention.id}",
-     :comment => { :value => "Details of the intevention:
-      - Requester ID:#{@intervention.author_id} 
-      - Customer :#{@intervention.customer_id} 
-      - Building ID: #{@intervention.building_id} 
-      - Column ID: #{@intervention.column_id}
-      - Elevator ID: #{@intervention.elevator_id} 
-      - Assigned employee ID: #{@intervention.employee_id} 
-      - Description: #{@intervention.report}"},
-     :type => "question",
-     :priority => "normal")
+    # ZendeskAPI::Ticket.create!($client, 
+    #  :subject => "Intervention ID#{@intervention.id}",
+    #  :comment => { :value => "Details of the intevention:
+    #   - Requester ID:#{@intervention.author_id} 
+    #   - Customer :#{@intervention.customer_id} 
+    #   - Building ID: #{@intervention.building_id} 
+    #   - Column ID: #{@intervention.column_id}
+    #   - Elevator ID: #{@intervention.elevator_id} 
+    #   - Assigned employee ID: #{@intervention.employee_id} 
+    #   - Description: #{@intervention.report}"},
+    #  :type => "question",
+    #  :priority => "normal")
   end
 
   # PATCH/PUT /interventions/1
