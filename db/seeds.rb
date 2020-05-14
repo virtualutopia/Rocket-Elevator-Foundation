@@ -167,14 +167,9 @@ end
     )
 end
 
-<<<<<<< HEAD
-# i = 2
-
-=======
 
 
 # i = 2
->>>>>>> master
 # y = 5
 # 5.times do
 #   Battery.create(
