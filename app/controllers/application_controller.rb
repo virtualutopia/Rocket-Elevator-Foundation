@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
       redirect_to main_app.root_path unless current_user.is_employee(current_user.email)
     end
   
-
+    skip_before_action :verify_authenticity_token
     protect_from_forgery with: :exception
 
      before_action :configure_permitted_parameters, if: :devise_controller?
