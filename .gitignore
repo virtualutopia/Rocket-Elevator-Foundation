@@ -38,3 +38,5 @@ spec/examples.txt
 
 bin/*
 
+# Ignore newrelic.yml
+newrelic.yml

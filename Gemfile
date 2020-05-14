@@ -128,3 +128,6 @@ group :development, :test do
   gem 'rspec-rails', '~> 4.0.0'
 end
 gem 'webmock', '~> 3.8', '>= 3.8.3'
+
+# New Relic
+gem 'newrelic_rpm'
