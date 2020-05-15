@@ -1,10 +1,24 @@
-# Rocket_Elevators_Controllers
+# Rocket_Elevators
 
 
 Site is now online at https://faridrocket.com/.
 
 Admin,  role: employee :    admin@hotmail.com/////111111 (6 times 1)
 User,   role: user :        user@hotmail.com/////111111  (6 times 1)
+
+# Week 14 DevOps
+
+A new server instance is created on AWS > LightSail
+Puma is employed as APP-server
+NGINX is installed  and configured as web-server 
+
+
+Monitoring and Survey tool
+Google Analytics is configured and sound is placed at all pages header. some Goals are set for further analytics.
+
+NewRelic metrics are embeded in the application and it is now surveyed by this tool.
+
+**Credentials for GA and NewRelic are sent to client via Deliverable page.
 
 # Week 11 - Quality and TDD
     Principal requirement: 
